@@ -29,7 +29,7 @@ public class RolesDAO {
             int id = resultSet.getInt("id");
             String nom = resultSet.getString("nom");
             
-            Role role = new Role(id, nom)
+            Role role = new Role(id, nom);
             roles.add(role);
         }
         } catch (Exception e) {
