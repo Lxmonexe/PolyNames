@@ -4,7 +4,7 @@ public class Carte {
 
     private int _id;
     private String _mot;
-    private int _id_type;
+    private int _id_type; // FK
     
     public Carte(int id, String mot, int id_type) {
         _id = id;
