@@ -3,7 +3,7 @@ CREATE TABLE `partie`(
     `code` INT NOT NULL,
     `score` INT NOT NULL,
     `id_joueur` INT NOT NULL,
-    `id_grille` INT NOT NULL,
+    `id_carte` INT NOT NULL,
     PRIMARY KEY(`id`)
 );
     
@@ -39,12 +39,6 @@ CREATE TABLE `dictionnaire`(
     PRIMARY KEY(`id`)
 );
 
-CREATE TABLE `grille`(
-    `id` INT NOT NULL AUTO_INCREMENT,
-    `id_carte` INT NOT NULL,
-    PRIMARY KEY(`id`)
-);
-
 ALTER TABLE `partie`
 ADD CONSTRAINT "FK_partie_joueur"
 FOREIGN KEY (`id_joueur`)
@@ -53,9 +47,9 @@ ON UPDATE NO ACTION
 ON DELETE NO ACTION;
 
 ALTER TABLE `partie`
-ADD CONSTRAINT "FK_partie_grille"
-FOREIGN KEY (`id_grille`)
-REFERENCES `grille` (`id`)
+ADD CONSTRAINT "FK_partie_carte"
+FOREIGN KEY (`id_carte`)
+REFERENCES `carte` (`id`)
 ON UPDATE NO ACTION
 ON DELETE NO ACTION;
 
