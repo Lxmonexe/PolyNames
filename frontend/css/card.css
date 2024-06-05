@@ -1,0 +1,36 @@
+grid {
+    width: 100%;
+    display: flex;
+    
+}
+gridCards {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    row-gap: 10px;
+    column-gap: 20px;
+}
+
+card {
+    display: flex;
+    width: 100px;
+    height: 50px;
+
+    border: 5px solid;
+    border-radius: 10px;
+    background: center no-repeat;
+    background-size: contain;
+}
+
+card.blue {
+    border-color: rgb(23, 23, 207);
+}
+
+card.black {
+    border-color: rgb(0, 0, 0);
+}
+
+card.grey{
+    border-color: rgb(128, 128, 128);
+
+}
+
