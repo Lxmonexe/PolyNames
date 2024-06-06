@@ -25,9 +25,11 @@ public class Dictionnaire {
 
     /**
      * 
-     * @return mot_constructor
+     * @return mot
      */
     public String get_mot() {
         return _mot;
     }
 }
+
+

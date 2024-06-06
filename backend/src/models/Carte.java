@@ -3,7 +3,7 @@ package models;
 public class Carte {
 
     private int _id;
-    private String _mot;
+    private Dictionnaire _id_dictionnaire; // fk dictionnaire
     private int _id_type;
     
     /**
@@ -12,9 +12,9 @@ public class Carte {
      * @param mot
      * @param id_type
      */
-    public Carte(int id, String mot, int id_type) {
+    public Carte(int id, Dictionnaire mots, int id_type) {
         _id = id;
-        _mot = mot;
+        _id_dictionnaire = mots;
         _id_type = id_type;
     }
 
@@ -30,8 +30,8 @@ public class Carte {
      * 
      * @return mot_carte
      */
-    public String get_mot() {
-        return _mot;
+    public Dictionnaire get_mot() {
+        return _id_dictionnaire;
     }
 
     public int get_id_type() {
