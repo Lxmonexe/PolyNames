@@ -36,4 +36,27 @@ public class DictionnairesDAO {
 
         return mots;
     }
+
+    public Dictionnaire findById(int idDictionnaire){
+        Dictionnaire dictionnaire = null;
+        try {
+            PolyNamesDatabase polyBayDatabase = new PolyNamesDatabase("localhost", 33006, "poly_names", "root", "");
+            PreparedStatement test = polyBayDatabase.prepareStatement("SELECT * FROM dictionnaire WHERE dictionnaire.id = ?");
+            test.setInt(1, idDictionnaire);
+            ResultSet result = test.executeQuery();
+
+            if(result.next()){
+                int id = result.getInt("id");
+                String mot = result.getString("mot");
+                
+                dictionnaire = new Dictionnaire(id, mot);
+            }
+
+        
+        } catch (Exception e) {
+            // TODO: handle exception
+            System.err.println(e.getMessage());
+        }
+        return dictionnaire;
+    }
 }
