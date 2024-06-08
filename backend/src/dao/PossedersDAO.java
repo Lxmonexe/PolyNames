@@ -6,63 +6,63 @@ import java.util.ArrayList;
 import java.util.Random;
 
 import database.PolyNamesDatabase;
-import models.Carte;
+import models.Posseder;
 import models.Dictionnaire;
 import models.Type;
 
-public class CartesDAO {
+public class PossedersDAO {
 
-    public CartesDAO() {
+    public PossedersDAO() {
 
     }
 
-    public ArrayList<Carte> findAll() {
-        ArrayList<Carte> cartes = new ArrayList<>();
+    public ArrayList<Posseder> findAll() {
+        ArrayList<Posseder> posseders = new ArrayList<>();
         DictionnairesDAO dictionnairesDAO = new DictionnairesDAO();
         try {
             PolyNamesDatabase polyBayDatabase = new PolyNamesDatabase("localhost", 33006, "poly_names", "root", "");
-            PreparedStatement test = polyBayDatabase.prepareStatement("SELECT * FROM carte;");
-            ResultSet result = test.executeQuery();
+            PreparedStatement preparedStatement = polyBayDatabase.prepareStatement("SELECT * FROM `posseder`;");
+            ResultSet resultSet = preparedStatement.executeQuery();
 
-            while (result.next()) {
-                int id = result.getInt("id");
-                int id_dictionaire = result.getInt("id_dictionaire");
-                int id_type = result.getInt("id_type");
+            while (resultSet.next()) {
+                int id = resultSet.getInt("id");
+                int id_dictionnaire = resultSet.getInt("id_dictionnaire");
+                int id_type = resultSet.getInt("id_type");
 
-                Dictionnaire dictionnaire = dictionnairesDAO.findById(id_dictionaire);
+                Dictionnaire dictionnaire = dictionnairesDAO.findById(id_dictionnaire);
 
-                Carte carte = new Carte(id, dictionnaire, id_type);
-                cartes.add(carte);
+                Posseder posseder = new Posseder(id, dictionnaire, id_type);
+                posseders.add(posseder);
             }
         } catch (Exception e) {
             // TODO: handle exception
             System.err.println(e.getMessage());
         }
 
-        return cartes;
+        return posseders;
     }
 
-    public Carte findById(int idCarte) {
-        Carte carte = null;
+    public Posseder findById(int idPosseder) {
+        Posseder posseder = null;
         DictionnairesDAO dictionnairesDAO = new DictionnairesDAO();
         try {
             PolyNamesDatabase polyBayDatabase = new PolyNamesDatabase("localhost", 33006, "poly_names", "root", "");
-            PreparedStatement test = polyBayDatabase.prepareStatement("SELECT * FROM carte WHERE carte.id = ?");
-            test.setInt(1, idCarte);
-            ResultSet result = test.executeQuery();
+            PreparedStatement preparedStatement = polyBayDatabase.prepareStatement("SELECT * FROM `posseder` WHERE `posseder`.`id` = ?");
+            preparedStatement.setInt(1, idPosseder);
+            ResultSet resultSet = preparedStatement.executeQuery();
 
-            int id = result.getInt("id");
-            int id_dictionnaire = result.getInt("id_dictionnaire");
-            int id_type = result.getInt("id_type");
+            int id = resultSet.getInt("id");
+            int id_dictionnaire = resultSet.getInt("id_dictionnaire");
+            int id_type = resultSet.getInt("id_type");
 
             Dictionnaire dictionnaire = dictionnairesDAO.findById(id_dictionnaire);
-            carte = new Carte(id, dictionnaire, id_type);
+            posseder = new Posseder(id, dictionnaire, id_type);
 
         } catch (Exception e) {
             // TODO: handle exception
             System.err.println(e.getMessage());
         }
-        return carte;
+        return posseder;
     }
 
     public void create(){
@@ -90,7 +90,7 @@ public class CartesDAO {
             Random rand = new Random();
             
             PolyNamesDatabase polyBayDatabase = new PolyNamesDatabase("localhost", 33006, "poly_names", "root", "");
-            PreparedStatement preparedStatement = polyBayDatabase.prepareStatement("INSERT INTO carte (id_type, id_dictionnaire) VALUES (?, ?);");
+            PreparedStatement preparedStatement = polyBayDatabase.prepareStatement("INSERT INTO Posseder (id_type, id_dictionnaire) VALUES (?, ?);");
             
             for(int i = 0; i < 25; i++){
                 rand_id_dictionnaire = ids_dictionnaire.get(rand.nextInt(ids_dictionnaire.size()));
@@ -112,7 +112,7 @@ public class CartesDAO {
     public void delete() {
         try {
             PolyNamesDatabase polyBayDatabase = new PolyNamesDatabase("localhost", 33006, "poly_names", "root", "");
-            PreparedStatement preparedStatement = polyBayDatabase.prepareStatement("DELETE * FROM carte");
+            PreparedStatement preparedStatement = polyBayDatabase.prepareStatement("DELETE * FROM Posseder");
             preparedStatement.execute();
 
         } catch (Exception e) {

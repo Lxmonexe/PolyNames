@@ -1,6 +1,6 @@
 package models;
 
-public class Carte {
+public class Posseder {
 
     private int _id;
     private Dictionnaire _id_dictionnaire; // fk dictionnaire
@@ -12,7 +12,7 @@ public class Carte {
      * @param mot
      * @param id_type
      */
-    public Carte(int id, Dictionnaire mots, int id_type) {
+    public Posseder(int id, Dictionnaire mots, int id_type) {
         _id = id;
         _id_dictionnaire = mots;
         _id_type = id_type;
@@ -30,7 +30,7 @@ public class Carte {
      * 
      * @return mot_carte
      */
-    public Dictionnaire get_mot() {
+    public Dictionnaire get_id_dictionnaire() {
         return _id_dictionnaire;
     }
 
