@@ -2,45 +2,36 @@ package models;
 
 public class Participer {
     private int _id;
-    private String _pseudo;
-    private int _id_partie;
-    private int _id_role; // FK
-    
-    /**
-     * Joueur constructor
-     * @param id
-     * @param pseudo
-     * @param _id_partie
-     * @param id_role
-     */
-    public Participer(int id, String pseudo, int id_partie, int id_role) {
+    private Joueur _idJoueur;
+    private Partie _idPartie;
+    private String _role;
+    private int _score;
+
+    public Participer(int id, Joueur idJoueur, Partie idPartie, String role, int score) {
         _id = id;
-        _pseudo = pseudo;
-        _id_partie = id_partie;
-        _id_role = id_role;
+        _idJoueur = idJoueur;
+        _idPartie = idPartie;
+        _role = role;
+        _score = score;
     }
 
-    /**
-     * 
-     * @return id_joueur
-     */
     public int get_id() {
         return _id;
     }
 
-    /**
-     * 
-     * @return pseudo_joueur
-     */
-    public String get_pseudo(){
-        return _pseudo;
+    public Joueur get_idJoueur() {
+        return _idJoueur;
     }
 
-    public int get_id_partie() {
-        return _id_partie;
+    public Partie get_idPartie() {
+        return _idPartie;
     }
 
-    public int get_id_role() {
-        return _id_role;
+    public String get_role() {
+        return _role;
+    }
+
+    public int get_score() {
+        return _score;
     }
 }

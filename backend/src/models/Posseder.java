@@ -3,19 +3,19 @@ package models;
 public class Posseder {
 
     private int _id;
-    private Dictionnaire _id_dictionnaire; // fk dictionnaire
-    private int _id_type;
+    private Mot _id_mot; // fk dictionnaire
+    private Couleur _id_couleur;
     
     /**
      * Carte constructor
      * @param id
-     * @param mot
-     * @param id_type
+     * @param i_mot
+     * @param id_couleur
      */
-    public Posseder(int id, Dictionnaire mots, int id_type) {
+    public Posseder(int id, Mot mot, Couleur id_couleur) {
         _id = id;
-        _id_dictionnaire = mots;
-        _id_type = id_type;
+        _id_mot = mot;
+        _id_couleur = id_couleur;
     }
 
     /**
@@ -30,12 +30,12 @@ public class Posseder {
      * 
      * @return mot_carte
      */
-    public Dictionnaire get_id_dictionnaire() {
-        return _id_dictionnaire;
+    public Mot get_id_dictionnaire() {
+        return _id_mot;
     }
 
-    public int get_id_type() {
-        return _id_type;
+    public Couleur get_id_type() {
+        return _id_couleur;
     }
 
 }

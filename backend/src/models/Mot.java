@@ -1,23 +1,23 @@
 package models;
 
-public class Dictionnaire {
+public class Mot {
 
     private int _id;
-    private String _mot;
+    private String _texte;
     
     /**
      * Dictionnaire constructor
      * @param id
-     * @param mot
+     * @param texte
      */
-    public Dictionnaire(int id, String mot) {
+    public Mot(int id, String texte) {
         this._id = id;
-        this._mot = mot;
+        this._texte = texte;
     }
 
     /**
      * 
-     * @return id_dictionnaire
+     * @return id
      */
     public int get_id() {
         return _id;
@@ -25,10 +25,10 @@ public class Dictionnaire {
 
     /**
      * 
-     * @return mot
+     * @return texte
      */
-    public String get_mot() {
-        return _mot;
+    public String get_texte() {
+        return _texte;
     }
 }
 
