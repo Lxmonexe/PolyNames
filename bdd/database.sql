@@ -63,7 +63,7 @@ WHERE `partie`.`code` = 1;
 -- --  -- Jeu de donnée pour tester -- -- --
 -- INSERT INTO `partie` (`code`) VALUES ("#2c5b");
 -- INSERT INTO `joueur` (`pseudo`) VALUES ("gab"), ("art");
--- INSERT INTO `participer` (`idJoueur`, `idPartie`, `role`, `score`) VALUES (1, 1, 'MDM', 0);
+-- INSERT INTO `participer` (`idJoueur`, `idPartie`, `role`, `score`) VALUES (1, 1, 'MDM', 12);
 -- INSERT INTO `participer` (`idJoueur`, `idPartie`, `role`, `score`) VALUES (2, 1, 'MDI', 12);
 
 -- --  -- DROP TABLES -- -- --
