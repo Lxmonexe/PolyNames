@@ -137,14 +137,14 @@ public class ParticiperDAO {
         }
     }
 
-    public void updateRole(Partie partie, Joueur joueur, String role) throws SQLException {
+    public void updateRole(String codePartie, int idJoueur, String role) throws SQLException {
         PolyNamesDatabase pbd = new PolyNamesDatabase("localhost", 33006, "poly_names", "root", "");
         String query = "UPDATE `participer` INNER JOIN `partie` ON `partie`.`id` = `participer`.`idPartie` INNER JOIN `joueur` ON `joueur`.`id` = `participer`.`idJoueur` SET `participer`.`role` = ? WHERE `partie`.`code` = ? AND `joueur`.`id` = ?;";
 
         try (PreparedStatement stmt = pbd.prepareStatement(query)) {
             stmt.setString(1, role);
-            stmt.setString(2, partie.get_code());
-            stmt.setInt(3, joueur.get_id());
+            stmt.setString(2, codePartie);
+            stmt.setInt(3, idJoueur);
             stmt.execute();
         }
     }
