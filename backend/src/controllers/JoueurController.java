@@ -2,15 +2,15 @@ package controllers;
 
 import java.sql.SQLException;
 
-import dao.MotDAO;
+import dao.JoueurDAO;
 import webserver.WebServerContext;
 
-public class MotController {
+public class JoueurController {
 
-    public static void findAll(WebServerContext context){
-        MotDAO motsDAO = new MotDAO();
+    public static void createJoueur(WebServerContext context){
+        JoueurDAO joueurDAO = new JoueurDAO();
         try {
-            context.getResponse().json(motsDAO.findAll());
+            joueurDAO.create(context.getRequest().getParam("pseudo"));
         } catch (SQLException e) {
             context.getResponse().send(500, "Internal Server Error: " + e.getMessage());
         }

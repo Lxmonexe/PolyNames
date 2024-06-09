@@ -132,6 +132,7 @@ public class ParticiperDAO {
             stmt.setInt(1, score);
             stmt.setString(2, partie.get_code());
             stmt.setInt(2, joueur.get_id());
+
             stmt.execute();
         }
     }
@@ -146,6 +147,24 @@ public class ParticiperDAO {
             stmt.setInt(3, joueur.get_id());
             stmt.execute();
         }
+    }
+
+    public String getRoleById(String codePartie, int idJoueur) throws SQLException {
+        PolyNamesDatabase pbd = new PolyNamesDatabase("localhost", 33006, "poly_names", "root", "");
+        String query = "SELECT `participer`.`role` FROM `participer` JOIN `joueur` ON `participer`.`idJoueur` = `joueur`.`id` JOIN `partie` ON `participer`.`idPartie` = `partie`.`id` WHERE `joueur`.`id` = ? AND `partie`.`code` = ?;";
+        
+        try (PreparedStatement stmt = pbd.prepareStatement(query)) {
+            stmt.setInt(1, idJoueur);
+            stmt.setString(2, codePartie);
+            ResultSet rs = stmt.executeQuery();
+
+            if (rs.next()) {
+                String role = rs.getString("role");
+                return role;
+            }
+
+        }
+        return null;
     }
 
     public void delete(int id) throws SQLException {

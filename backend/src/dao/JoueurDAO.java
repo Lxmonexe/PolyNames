@@ -15,11 +15,11 @@ public class JoueurDAO {
 
     }
 
-    public void create(Joueur joueur) throws SQLException {
+    public void create(String pseudo) throws SQLException {
         PolyNamesDatabase pbd = new PolyNamesDatabase("localhost", 33006, "poly_names", "root", "");
         String query = "INSERT INTO `joueur` (`pseudo`) VALUES (?);";
         try (PreparedStatement stmt = pbd.prepareStatement(query)) {
-            stmt.setString(1, joueur.get_pseudo());
+            stmt.setString(1, pseudo);
             stmt.execute();
         }
     }

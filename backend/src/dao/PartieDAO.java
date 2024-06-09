@@ -7,8 +7,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import database.PolyNamesDatabase;
-import models.Posseder;
-import models.Participer;
 import models.Partie;
 
 public class PartieDAO {
@@ -17,11 +15,11 @@ public class PartieDAO {
 
     }
 
-    public void create(Partie partie) throws SQLException {
+    public void create(String code) throws SQLException {
         PolyNamesDatabase pbd = new PolyNamesDatabase("localhost", 33006, "poly_names", "root", "");
         String query = "INSERT INTO `partie` (`code`) VALUES (?);";
         try (PreparedStatement stmt = pbd.prepareStatement(query)) {
-            stmt.setString(1, partie.get_code());
+            stmt.setString(1, code);
             stmt.execute();
         }
     }
