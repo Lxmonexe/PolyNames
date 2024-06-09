@@ -35,11 +35,30 @@ CREATE TABLE `grille` (
     `couleur` VARCHAR(50) NOT NULL,
     FOREIGN KEY (`idPartie`) REFERENCES `partie`(`id`),
     FOREIGN KEY (`idMot`) REFERENCES `mot`(`id`),
-    UNIQUE (`idPartie`, `idMot`) -- Mot unique part grille dans une partie
+    -- UNIQUE (`idPartie`, `idMot`) -- Mot unique part grille dans une partie
 );
 
+-- List généré par CHAT-GPT
+INSERT INTO `mot` (`texte`) VALUES ('Pomme'), ('Soleil'), ('Montagne'), ('Océan'), ('Forêt'), ('Étoile'), ('Rivière'), 
+('Fleur'), ('Neige'), ('Plage'), ('Cascade'), ('Papillon'), ('Nuage'), ('Volcan'), ('Tempête'), ('Arc-en-ciel'), 
+('Savane'), ('Désert'), ('Grotte'), ('Planète'), ('Lune'), ('Comète'), ('Galaxie'), ('Univers'), ('Métropole'), 
+('Village'), ('Pyramide'), ('Temple'), ('Forteresse'), ('Château'), ('Palais'), ('Tour'), ('Moulin'), ('Port'), 
+('Parc'), ('Jardin'), ('Statue'), ('Fontaine'), ('Labyrinthe'), ('Phare'), ('Aquarium'), ('Zoo'), ('Musée'), 
+('Bibliothèque'), ('Théâtre'), ('Stade'), ('Cirque'), ('Carnaval'), ('Foire'), ('Festival');
 
+-- JOINTURE
+SELECT `partie`.`code`, `mot`.`texte`, `grille`.`couleur` FROM `grille` 
+INNER JOIN `partie` ON `partie`.`id` = `grille`.`idPartie` 
+INNER JOIN `mot` ON `mot`.`id` = `grille`.`idMot`;
 
+SELECT `partie`.`code`, `joueur`.`pseudo`, `participer`.`role`, `participer`.`score` FROM `participer`
+INNER JOIN `partie` ON `partie`.`id` = `participer`.`idPartie` 
+INNER JOIN `joueur` ON `joueur`.`id` = `participer`.`idJoueur`;
+
+SELECT `partie`.`code`, `mot`.`texte`, `grille`.`couleur` FROM `grille` INNER JOIN `partie` ON `partie`.`id` = `grille`.`idPartie` 
+INNER JOIN `partie` ON `partie`.`id` = `grille`.`idPartie` 
+INNER JOIN `mot` ON `mot`.`id` = `grille`.`idMot`
+WHERE `partie`.`code` = 1;
 
 -- CREATE TABLE `partie`(
 --     `id` INT NOT NULL AUTO_INCREMENT,
