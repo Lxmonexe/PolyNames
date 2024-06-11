@@ -7,28 +7,25 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <h1>Choix des rôles</h1>
-       <div id="joueur1">
-        <h2>Joueur 1</h2>
-        <label>
-            <input type="checkbox" name="myCheckbox" checked>
-            Maître des mots
-        </label>
-        <label>
-            <input type="checkbox" name="myCheckbox">
-            Maître des intuitions
-        </label>
-       </div>
-       <div id="joueur2">
-        <h2>Joueur 2</h2>
-        <label>
-            <input type="checkbox" name="myCheckbox">
-            Maître des mots
-        </label>
-        <label>
-            <input type="checkbox" name="myCheckbox" checked>
-            Maître des intuitions
-        </label>
-       </div>
+    <div class="container-player">
+        <h1>Choix des rôles</h1>
+        <div class="player">
+            <h2>Joueur 1</h2>
+            <select name="rolejoueur1" id="rolejoueur1">
+                <option value="mots">Maître des mots</option>
+                <option value="intuitions">Maître des intuitions</option>
+            </select>
+            <div id="error-message"></div>
+        </div>
+        <div class="player">
+            <h2>Joueur 2</h2>
+            <select name="rolejoueur2" id="rolejoueur2">
+                <option value="mots">Maître des mots</option>
+                <option value="intuitions">Maître des intuitions</option>
+            </select>
+            <div id="error-message"></div>
+        </div>
+        <button id="start-game">Commencer la partie</button>
+    </div>
 </body>
 </html>
