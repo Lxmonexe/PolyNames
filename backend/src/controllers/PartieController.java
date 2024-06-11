@@ -11,21 +11,13 @@ public class PartieController {
     private static final String HEX_CHARACTERS = "0123456789ABCDEF";
     private static final SecureRandom RANDOM = new SecureRandom();
 
-    public static void findAll(WebServerContext context){
-        PartieDAO partieDAO = new PartieDAO();
-        try {
-            context.getResponse().json(partieDAO.findAll());
-            context.getResponse().ok("200");
-        } catch (SQLException e) {
-            context.getResponse().send(500, "Internal Server Error: " + e.getMessage());
-        }
-    }
-
     public static void createPartie(WebServerContext context){
         PartieDAO partieDAO = new PartieDAO();
         try {
-            String code = generateHexCode(6);
-            partieDAO.create(code);
+            String code = context.getRequest().getParam("id").toString();
+            System.out.println(code);
+            partieDAO.create(context.getRequest().getParam("id"));
+            context.getResponse().ok("ok");
         } catch (Exception e) {
             // TODO: handle exception
             context.getResponse().send(500, "Internal Server Error: " + e.getMessage());

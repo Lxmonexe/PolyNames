@@ -2,7 +2,7 @@ import controllers.GrilleController;
 import controllers.JoueurController;
 import controllers.ParticiperController;
 import controllers.PartieController;
-import dao.GrilleDAO;
+// import dao.GrilleDAO;
 import webserver.WebServer;
 import webserver.WebServerContext;
 
@@ -15,14 +15,14 @@ public class App {
         // CartesDAO cartesDAO = new CartesDAO();
         // cartesDAO.create();
 
-        GrilleDAO grilleDAO = new GrilleDAO();
-        grilleDAO.create("#2c5b");
+        // GrilleDAO grilleDAO = new GrilleDAO();
+        // grilleDAO.create("#2c5b");
 
 
-        webServer.getRouter().get("/partie/:pseudo", (WebServerContext context) -> { PartieController.createPartie(context); JoueurController.createJoueur(context);}); //fonctionne
-        webServer.getRouter().get("/partie/:code", (WebServerContext context) -> { ParticiperController.getRoleById(context);}); //fonctionne
-        webServer.getRouter().get("/partie/:code:/:joueurid/", (WebServerContext context) -> { ParticiperController.getRoleById(context);}); //fonctionne
-        webServer.getRouter().get("/partie/:code/:joueurid/:role", (WebServerContext context) -> { GrilleController.findAll(context);}); //fonctionne
+        webServer.getRouter().get("/partie/code/:partieid", (WebServerContext context) -> { PartieController.createPartie(context); });
+        // webServer.getRouter().get("/partie/:code", (WebServerContext context) -> { ParticiperController.getRoleById(context);}); //fonctionne
+        // webServer.getRouter().get("/partie/:code:/:joueurid/", (WebServerContext context) -> { ParticiperController.getRoleById(context);}); //fonctionne
+        // webServer.getRouter().get("/partie/:code/:joueurid/:role", (WebServerContext context) -> { GrilleController.findAll(context);}); //fonctionne
         
         // webServer.getRouter().get("/mots", (WebServerContext context) -> { MotController.findAll(context);}); //fonctionne
     }
