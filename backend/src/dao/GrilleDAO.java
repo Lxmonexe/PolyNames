@@ -19,6 +19,7 @@ public class GrilleDAO {
         
     }
 
+    //coucou
     public void create(String partieCode) throws SQLException {
         PolyNamesDatabase pbd = new PolyNamesDatabase("localhost", 33006, "poly_names", "root", "");
         List<Mot> mots = new ArrayList<>();
@@ -54,7 +55,7 @@ public class GrilleDAO {
         
         try (PreparedStatement stmt = pbd.prepareStatement(query)) {
             for(int i = 0; i < 25; i++){
-                stmt.setInt(1, idPartie);
+                stmt.setInt(1, partie.get_id());
                 stmt.setInt(2, mots.get(i).get_id());
                 stmt.setString(3, couleurs.get(i));
                 stmt.execute();
@@ -67,7 +68,7 @@ public class GrilleDAO {
         PolyNamesDatabase pbd = new PolyNamesDatabase("localhost", 33006, "poly_names", "root", "");
         String query = "SELECT * FROM `grille` WHERE `id` = ?;";
         
-        try (PreparedStatement stmt = pbd.prepareStatement(query)) {
+        try (PreparedStatement stmt = pbd.prepareStatement(query)) {    
             stmt.setInt(1, id);
             try (ResultSet rs = stmt.executeQuery()) {
                 if (rs.next()) {
