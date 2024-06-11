@@ -21,7 +21,7 @@
 
 //     //coucou
 //     public void create(String partieCode) throws SQLException {
-//         PolyNamesDatabase pbd = new PolyNamesDatabase("localhost", 33006, "poly_names", "root", "");
+//         PolyNamesDatabase pbd = new PolyNamesDatabase();
 //         List<Mot> mots = new ArrayList<>();
 //         ArrayList<String> couleurs = new ArrayList<>();
 //         Partie partie = null;
@@ -65,7 +65,7 @@
 //     }
 
 //     public Grille findById(int id) throws SQLException {
-//         PolyNamesDatabase pbd = new PolyNamesDatabase("localhost", 33006, "poly_names", "root", "");
+//         PolyNamesDatabase pbd = new PolyNamesDatabase();
 //         String query = "SELECT * FROM `grille` WHERE `id` = ?;";
         
 //         try (PreparedStatement stmt = pbd.prepareStatement(query)) {    
@@ -86,7 +86,7 @@
 //     }
 
 //     public List<Grille> findAll() throws SQLException {
-//         PolyNamesDatabase pbd = new PolyNamesDatabase("localhost", 33006, "poly_names", "root", "");
+//         PolyNamesDatabase pbd = new PolyNamesDatabase();
 //         List<Grille> grilles = new ArrayList<>();
 //         String query = "SELECT * FROM `grille`;";
         
@@ -107,7 +107,7 @@
 //     }
 
 //     public void update(Grille grille) throws SQLException {
-//         PolyNamesDatabase pbd = new PolyNamesDatabase("localhost", 33006, "poly_names", "root", "");
+//         PolyNamesDatabase pbd = new PolyNamesDatabase();
 //         String query = "UPDATE `grille` SET `idPartie` = ?, `idMot` = ?, `couleur` = ? WHERE `id` = ?;";
         
 //         try (PreparedStatement stmt = pbd.prepareStatement(query)) {
@@ -120,7 +120,7 @@
 //     }
 
 //     public void delete(int id) throws SQLException {
-//         PolyNamesDatabase pbd = new PolyNamesDatabase("localhost", 33006, "poly_names", "root", "");
+//         PolyNamesDatabase pbd = new PolyNamesDatabase();
 //         String query = "DELETE FROM `grille` WHERE `id` = ?;";
         
 //         try (PreparedStatement stmt = pbd.prepareStatement(query)) {

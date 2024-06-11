@@ -46,7 +46,7 @@ async function joinGame(){
     try {
         const data = await GameService.postGameCode(randomHex)
         console.log(data)
-        //window.location.href = "choix.html"
+        window.location.href = "choix.html"
     } catch (error) {
         console.error('Error posting game code:', error)
     }

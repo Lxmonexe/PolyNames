@@ -14,10 +14,8 @@ public class PartieController {
     public static void createPartie(WebServerContext context){
         PartieDAO partieDAO = new PartieDAO();
         try {
-            String code = context.getRequest().getParam("id").toString();
-            System.out.println(code);
-            partieDAO.create(context.getRequest().getParam("id"));
-            context.getResponse().ok("ok");
+            partieDAO.create(context.getRequest().getParam("partieid"));
+            context.getResponse().ok("partie créée");
         } catch (Exception e) {
             // TODO: handle exception
             context.getResponse().send(500, "Internal Server Error: " + e.getMessage());

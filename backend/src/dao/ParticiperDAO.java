@@ -20,7 +20,7 @@
 //     }
 
 //     public void create(Partie partie, Joueur joueur) throws SQLException {
-//         PolyNamesDatabase pbd = new PolyNamesDatabase("localhost", 33006, "poly_names", "root", "");
+//         PolyNamesDatabase pbd = new PolyNamesDatabase();
 //         String query = "INSERT INTO `participer` (`idJoueur`, `idPartie`, `role`, `score`) VALUES (?, ?, ?, ?);";
 //         ArrayList<String> roles = new ArrayList<>();
 
@@ -39,7 +39,7 @@
 //     }
 
 //     public void rejoindre(Partie partie, Joueur createur) throws SQLException {
-//         PolyNamesDatabase pbd = new PolyNamesDatabase("localhost", 33006, "poly_names", "root", "");
+//         PolyNamesDatabase pbd = new PolyNamesDatabase();
 //         String query = "INSERT INTO `participer` (`idJoueur`, `idPartie`, `role`, `score`) VALUES (?, ?, ?, ?);";
         
 //         ArrayList<String> roles = new ArrayList<>();
@@ -61,7 +61,7 @@
 //     }
     
 //     private String getAvailableRole(int idPartie) throws SQLException {
-//         PolyNamesDatabase pbd = new PolyNamesDatabase("localhost", 33006, "poly_names", "root", "");
+//         PolyNamesDatabase pbd = new PolyNamesDatabase();
 //         String query = "SELECT COUNT(*) AS count FROM `participer` WHERE `idPartie` = ? AND (`role` = 'MDM' OR `role` = 'MDI');";
         
 //         try (PreparedStatement stmt = pbd.prepareStatement(query)) {
@@ -81,7 +81,7 @@
 //     }
     
 //     public Participer findById(int id) throws SQLException {
-//         PolyNamesDatabase pbd = new PolyNamesDatabase("localhost", 33006, "poly_names", "root", "");
+//         PolyNamesDatabase pbd = new PolyNamesDatabase();
 //         String query = "SELECT * FROM `participer` WHERE `id` = ?;";
 
 //         try (PreparedStatement stmt = pbd.prepareStatement(query)) {
@@ -102,7 +102,7 @@
 //     }
 
 //     public List<Participer> findAll() throws SQLException {
-//         PolyNamesDatabase pbd = new PolyNamesDatabase("localhost", 33006, "poly_names", "root", "");
+//         PolyNamesDatabase pbd = new PolyNamesDatabase();
 //         List<Participer> participations = new ArrayList<>();
 //         String query = "SELECT * FROM `participer`;";
 
@@ -137,7 +137,7 @@
 //     }
 
 //     public void updateRole(String codePartie, int idJoueur, String role) throws SQLException {
-//         PolyNamesDatabase pbd = new PolyNamesDatabase("localhost", 33006, "poly_names", "root", "");
+//         PolyNamesDatabase pbd = new PolyNamesDatabase();
 //         String query = "UPDATE `participer` INNER JOIN `partie` ON `partie`.`id` = `participer`.`idPartie` INNER JOIN `joueur` ON `joueur`.`id` = `participer`.`idJoueur` SET `participer`.`role` = ? WHERE `partie`.`code` = ? AND `joueur`.`id` = ?;";
 
 //         try (PreparedStatement stmt = pbd.prepareStatement(query)) {
@@ -149,7 +149,7 @@
 //     }
 
 //     public String getRoleById(String codePartie, int idJoueur) throws SQLException {
-//         PolyNamesDatabase pbd = new PolyNamesDatabase("localhost", 33006, "poly_names", "root", "");
+//         PolyNamesDatabase pbd = new PolyNamesDatabase();
 //         String query = "SELECT `participer`.`role` FROM `participer` JOIN `joueur` ON `participer`.`idJoueur` = `joueur`.`id` JOIN `partie` ON `participer`.`idPartie` = `partie`.`id` WHERE `joueur`.`id` = ? AND `partie`.`code` = ?;";
         
 //         try (PreparedStatement stmt = pbd.prepareStatement(query)) {
@@ -167,7 +167,7 @@
 //     }
 
 //     public void delete(int id) throws SQLException {
-//         PolyNamesDatabase pbd = new PolyNamesDatabase("localhost", 33006, "poly_names", "root", "");
+//         PolyNamesDatabase pbd = new PolyNamesDatabase();
 //         String query = "DELETE FROM `participer` WHERE `id` = ?;";
 //         try (PreparedStatement stmt = pbd.prepareStatement(query)) {
 //             stmt.setInt(1, id);

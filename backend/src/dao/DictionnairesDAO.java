@@ -17,7 +17,7 @@
 //         ArrayList<Dictionnaire> mots = new ArrayList<>();
 
 //         try {
-//             PolyNamesDatabase polyBayDatabase = new PolyNamesDatabase("localhost", 33006, "poly_names", "root", "");
+//             PolyNamesDatabase polyBayDatabase = new PolyNamesDatabase();
 //             PreparedStatement preparedStatement = polyBayDatabase.prepareStatement("SELECT * FROM dictionnaire;");
 //             ResultSet resultSet = preparedStatement.executeQuery();
         
@@ -39,7 +39,7 @@
 //     public Dictionnaire findById(int idDictionnaire){
 //         Dictionnaire dictionnaire = null;
 //         try {
-//             PolyNamesDatabase polyBayDatabase = new PolyNamesDatabase("localhost", 33006, "poly_names", "root", "");
+//             PolyNamesDatabase polyBayDatabase = new PolyNamesDatabase();
 //             PreparedStatement test = polyBayDatabase.prepareStatement("SELECT * FROM dictionnaire WHERE dictionnaire.id = ?");
 //             test.setInt(1, idDictionnaire);
 //             ResultSet result = test.executeQuery();

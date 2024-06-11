@@ -16,7 +16,7 @@ public class JoueurDAO {
     }
 
     public void create(String pseudo) throws SQLException {
-        PolyNamesDatabase pbd = new PolyNamesDatabase("localhost", 33006, "poly_names", "root", "");
+        PolyNamesDatabase pbd = new PolyNamesDatabase();
         String query = "INSERT INTO `joueur` (`pseudo`) VALUES (?);";
         try (PreparedStatement stmt = pbd.prepareStatement(query)) {
             stmt.setString(1, pseudo);
@@ -25,7 +25,7 @@ public class JoueurDAO {
     }
 
     public Joueur findById(int id) throws SQLException {
-        PolyNamesDatabase pbd = new PolyNamesDatabase("localhost", 33006, "poly_names", "root", "");
+        PolyNamesDatabase pbd = new PolyNamesDatabase();
         String query = "SELECT * FROM `joueur` WHERE `id` = ?;";
         try (PreparedStatement stmt = pbd.prepareStatement(query)) {
             stmt.setInt(1, id);
@@ -39,7 +39,7 @@ public class JoueurDAO {
     }
 
     public List<Joueur> findAll() throws SQLException {
-        PolyNamesDatabase pbd = new PolyNamesDatabase("localhost", 33006, "poly_names", "root", "");
+        PolyNamesDatabase pbd = new PolyNamesDatabase();
         List<Joueur> joueurs = new ArrayList<>();
         String query = "SELECT * FROM `joueur`;";
         try (PreparedStatement stmt = pbd.prepareStatement(query);
@@ -52,7 +52,7 @@ public class JoueurDAO {
     }
 
     public void update(Joueur joueur) throws SQLException {
-        PolyNamesDatabase pbd = new PolyNamesDatabase("localhost", 33006, "poly_names", "root", "");
+        PolyNamesDatabase pbd = new PolyNamesDatabase();
         String query = "UPDATE `joueur` SET `pseudo` = ? WHERE `id` = ?;";
         try (PreparedStatement stmt = pbd.prepareStatement(query)) {
             stmt.setString(1, joueur.get_pseudo());
@@ -62,7 +62,7 @@ public class JoueurDAO {
     }
 
     public void delete(int id) throws SQLException {
-        PolyNamesDatabase pbd = new PolyNamesDatabase("localhost", 33006, "poly_names", "root", "");
+        PolyNamesDatabase pbd = new PolyNamesDatabase();
         String query = "DELETE FROM `joueur` WHERE `id` = ?;";
         try (PreparedStatement stmt = pbd.prepareStatement(query)) {
             stmt.setInt(1, id);

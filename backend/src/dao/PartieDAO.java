@@ -16,7 +16,7 @@ public class PartieDAO {
     }
 
     public void create(String idPartie) throws SQLException {
-        PolyNamesDatabase pbd = new PolyNamesDatabase("localhost", 33006, "poly_names", "root", "");
+        PolyNamesDatabase pbd = new PolyNamesDatabase();
         String query = "INSERT INTO `partie` (`id`) VALUES (?);";
         try (PreparedStatement stmt = pbd.prepareStatement(query)) {
             stmt.setString(1, idPartie);
@@ -25,7 +25,7 @@ public class PartieDAO {
     }
 
     public Partie findById(String idPartie) throws SQLException {
-        PolyNamesDatabase pbd = new PolyNamesDatabase("localhost", 33006, "poly_names", "root", "");
+        PolyNamesDatabase pbd = new PolyNamesDatabase();
         String query = "SELECT * FROM `partie` WHERE `id` = ?;";
         try (PreparedStatement stmt = pbd.prepareStatement(query)) {
             stmt.setString(1, idPartie);
@@ -39,7 +39,7 @@ public class PartieDAO {
     }
 
     // public List<Partie> findAll() throws SQLException {
-    //     PolyNamesDatabase pbd = new PolyNamesDatabase("localhost", 33006, "poly_names", "root", "");
+    //     PolyNamesDatabase pbd = new PolyNamesDatabase();
     //     List<Partie> parties = new ArrayList<>();
     //     String query = "SELECT * FROM `partie`;";
     //     try (PreparedStatement stmt = pbd.prepareStatement(query);
@@ -53,7 +53,7 @@ public class PartieDAO {
 
 
     public void delete(int id) throws SQLException {
-        PolyNamesDatabase pbd = new PolyNamesDatabase("localhost", 33006, "poly_names", "root", "");
+        PolyNamesDatabase pbd = new PolyNamesDatabase();
         String query = "DELETE FROM `partie` WHERE `id` = ?;";
         try (PreparedStatement stmt = pbd.prepareStatement(query)) {
             stmt.setInt(1, id);

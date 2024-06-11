@@ -21,7 +21,7 @@ public class MotDAO {
      * @throws SQLException
      */
     public void create(Mot mot) throws SQLException {
-        PolyNamesDatabase pbd = new PolyNamesDatabase("localhost", 33006, "poly_names", "root", "");
+        PolyNamesDatabase pbd = new PolyNamesDatabase();
         String query = "INSERT INTO `mot` (`texte`) VALUES (?);";
         try (PreparedStatement stmt = pbd.prepareStatement(query)) {
             stmt.setString(1, mot.get_texte());
@@ -30,7 +30,7 @@ public class MotDAO {
     }
 
     public Mot findById(int id) throws SQLException {
-        PolyNamesDatabase pbd = new PolyNamesDatabase("localhost", 33006, "poly_names", "root", "");
+        PolyNamesDatabase pbd = new PolyNamesDatabase();
         String query = "SELECT * FROM `mot` WHERE `id` = ?;";
         try (PreparedStatement stmt = pbd.prepareStatement(query)) {
             stmt.setInt(1, id);
@@ -44,7 +44,7 @@ public class MotDAO {
     }
 
     public List<Mot> findAll() throws SQLException {
-        PolyNamesDatabase pbd = new PolyNamesDatabase("localhost", 33006, "poly_names", "root", "");
+        PolyNamesDatabase pbd = new PolyNamesDatabase();
         List<Mot> mots = new ArrayList<>();
         String query = "SELECT * FROM `mot`;";
         try (PreparedStatement stmt = pbd.prepareStatement(query);
@@ -57,7 +57,7 @@ public class MotDAO {
     }
 
     public void update(Mot mot) throws SQLException {
-        PolyNamesDatabase pbd = new PolyNamesDatabase("localhost", 33006, "poly_names", "root", "");
+        PolyNamesDatabase pbd = new PolyNamesDatabase();
         String query = "UPDATE `mot` SET `texte` = ? WHERE `id` = ?;";
         try (PreparedStatement stmt = pbd.prepareStatement(query)) {
             stmt.setString(1, mot.get_texte());
@@ -67,7 +67,7 @@ public class MotDAO {
     }
 
     public void delete(int id) throws SQLException {
-        PolyNamesDatabase pbd = new PolyNamesDatabase("localhost", 33006, "poly_names", "root", "");
+        PolyNamesDatabase pbd = new PolyNamesDatabase();
         String query = "DELETE FROM `mot` WHERE `id` = ?;";
         try (PreparedStatement stmt = pbd.prepareStatement(query)) {
             stmt.setInt(1, id);
