@@ -2,12 +2,12 @@ package models;
 
 public class Participer {
     private int _id;
-    private Joueur _idJoueur;
-    private Partie _idPartie;
+    private int _idJoueur;
+    private String _idPartie;
     private String _role;
     private int _score;
 
-    public Participer(int id, Joueur idJoueur, Partie idPartie, String role, int score) {
+    public Participer(int id, int idJoueur, String idPartie, String role, int score) {
         _id = id;
         _idJoueur = idJoueur;
         _idPartie = idPartie;
@@ -19,11 +19,15 @@ public class Participer {
         return _id;
     }
 
-    public Joueur get_idJoueur() {
+    public int get_idJoueur() {
         return _idJoueur;
     }
 
-    public Partie get_idPartie() {
+    /**
+     * Renvoie le code de la partie en hexa
+     * @return
+     */
+    public String get_idPartie() {
         return _idPartie;
     }
 

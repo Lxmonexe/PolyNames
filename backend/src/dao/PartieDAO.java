@@ -15,51 +15,42 @@ public class PartieDAO {
 
     }
 
-    public void create(String code) throws SQLException {
+    public void create(String idPartie) throws SQLException {
         PolyNamesDatabase pbd = new PolyNamesDatabase("localhost", 33006, "poly_names", "root", "");
-        String query = "INSERT INTO `partie` (`code`) VALUES (?);";
+        String query = "INSERT INTO `partie` (`id`) VALUES (?);";
         try (PreparedStatement stmt = pbd.prepareStatement(query)) {
-            stmt.setString(1, code);
+            stmt.setString(1, idPartie);
             stmt.execute();
         }
     }
 
-    public Partie findById(int id) throws SQLException {
+    public Partie findById(String idPartie) throws SQLException {
         PolyNamesDatabase pbd = new PolyNamesDatabase("localhost", 33006, "poly_names", "root", "");
         String query = "SELECT * FROM `partie` WHERE `id` = ?;";
         try (PreparedStatement stmt = pbd.prepareStatement(query)) {
-            stmt.setInt(1, id);
+            stmt.setString(1, idPartie);
             try (ResultSet rs = stmt.executeQuery()) {
                 if (rs.next()) {
-                    return new Partie(rs.getInt("id"), rs.getString("code"));
+                    return new Partie(rs.getString("id"));
                 }
             }
         }
         return null;
     }
 
-    public List<Partie> findAll() throws SQLException {
-        PolyNamesDatabase pbd = new PolyNamesDatabase("localhost", 33006, "poly_names", "root", "");
-        List<Partie> parties = new ArrayList<>();
-        String query = "SELECT * FROM `partie`;";
-        try (PreparedStatement stmt = pbd.prepareStatement(query);
-             ResultSet rs = stmt.executeQuery()) {
-            while (rs.next()) {
-                parties.add(new Partie(rs.getInt("id"), rs.getString("code")));
-            }
-        }
-        return parties;
-    }
+    // public List<Partie> findAll() throws SQLException {
+    //     PolyNamesDatabase pbd = new PolyNamesDatabase("localhost", 33006, "poly_names", "root", "");
+    //     List<Partie> parties = new ArrayList<>();
+    //     String query = "SELECT * FROM `partie`;";
+    //     try (PreparedStatement stmt = pbd.prepareStatement(query);
+    //          ResultSet rs = stmt.executeQuery()) {
+    //         while (rs.next()) {
+    //             parties.add(new Partie(rs.getString("id")));
+    //         }
+    //     }
+    //     return parties;
+    // }
 
-    public void update(Partie partie) throws SQLException {
-        PolyNamesDatabase pbd = new PolyNamesDatabase("localhost", 33006, "poly_names", "root", "");
-        String query = "UPDATE `partie` SET `code` = ? WHERE `id` = ?;";
-        try (PreparedStatement stmt = pbd.prepareStatement(query)) {
-            stmt.setString(1, partie.get_code());
-            stmt.setInt(2, partie.get_id());
-            stmt.execute();
-        }
-    }
 
     public void delete(int id) throws SQLException {
         PolyNamesDatabase pbd = new PolyNamesDatabase("localhost", 33006, "poly_names", "root", "");

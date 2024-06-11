@@ -6,8 +6,7 @@ CREATE TABLE `joueur` (
 
 -- Création de la table Partie (Game)
 CREATE TABLE `partie` (
-    `id` INT AUTO_INCREMENT PRIMARY KEY,
-    `code` VARCHAR(255) UNIQUE NOT NULL
+    `id` VARCHAR(7) PRIMARY KEY
 );
 
 -- Création de la table Mot (Word)
@@ -20,7 +19,7 @@ CREATE TABLE `mot` (
 CREATE TABLE `participer` (
     `id` INT AUTO_INCREMENT PRIMARY KEY,
     `idJoueur` INT NOT NULL,
-    `idPartie` INT NOT NULL,
+    `idPartie` VARCHAR(7) NOT NULL,
     `role` VARCHAR(50) NOT NULL,
     `score` INT DEFAULT 0,
     FOREIGN KEY (`idJoueur`) REFERENCES `joueur`(`id`),
@@ -30,11 +29,11 @@ CREATE TABLE `participer` (
 -- Création de la table Grille (Grid)
 CREATE TABLE `grille` (
     `id` INT AUTO_INCREMENT PRIMARY KEY,
-    `idPartie` INT NOT NULL,
+    `idPartie` VARCHAR(7) NOT NULL,
     `idMot` INT NOT NULL,
     `couleur` VARCHAR(50) NOT NULL,
     FOREIGN KEY (`idPartie`) REFERENCES `partie`(`id`),
-    FOREIGN KEY (`idMot`) REFERENCES `mot`(`id`),
+    FOREIGN KEY (`idMot`) REFERENCES `mot`(`id`)
     -- UNIQUE (`idPartie`, `idMot`) -- Mot unique part grille dans une partie
 );
 
@@ -45,6 +44,13 @@ INSERT INTO `mot` (`texte`) VALUES ('Pomme'), ('Soleil'), ('Montagne'), ('Océan
 ('Village'), ('Pyramide'), ('Temple'), ('Forteresse'), ('Château'), ('Palais'), ('Tour'), ('Moulin'), ('Port'), 
 ('Parc'), ('Jardin'), ('Statue'), ('Fontaine'), ('Labyrinthe'), ('Phare'), ('Aquarium'), ('Zoo'), ('Musée'), 
 ('Bibliothèque'), ('Théâtre'), ('Stade'), ('Cirque'), ('Carnaval'), ('Foire'), ('Festival');
+
+
+-- --  -- Jeu de donnée pour tester -- -- --
+INSERT INTO `partie` (`id`) VALUES ("#2c5b8s");
+INSERT INTO `joueur` (`pseudo`) VALUES ("gab"), ("art");
+INSERT INTO `participer` (`idJoueur`, `idPartie`, `role`, `score`) VALUES (1, "#2c5b8s", 'MDM', 12);
+INSERT INTO `participer` (`idJoueur`, `idPartie`, `role`, `score`) VALUES (2, "#2c5b8s", 'MDI', 12);
 
 -- JOINTURE
 SELECT `partie`.`code`, `mot`.`texte`, `grille`.`couleur` FROM `grille` 
@@ -60,15 +66,9 @@ INNER JOIN `partie` ON `partie`.`id` = `grille`.`idPartie`
 INNER JOIN `mot` ON `mot`.`id` = `grille`.`idMot`
 WHERE `partie`.`code` = 1;
 
--- --  -- Jeu de donnée pour tester -- -- --
--- INSERT INTO `partie` (`code`) VALUES ("#2c5b");
--- INSERT INTO `joueur` (`pseudo`) VALUES ("gab"), ("art");
--- INSERT INTO `participer` (`idJoueur`, `idPartie`, `role`, `score`) VALUES (1, 1, 'MDM', 12);
--- INSERT INTO `participer` (`idJoueur`, `idPartie`, `role`, `score`) VALUES (2, 1, 'MDI', 12);
-
 -- --  -- DROP TABLES -- -- --
+-- DROP TABLE IF EXISTS `participer`;
 -- DROP TABLE IF EXISTS `partie`;
 -- DROP TABLE IF EXISTS `joueur`;
--- DROP TABLE IF EXISTS `participer`;
 -- DROP TABLE IF EXISTS `grille`;
 -- DROP TABLE IF EXISTS `mot`;

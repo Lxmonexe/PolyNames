@@ -1,20 +1,22 @@
 package models;
 
 public class Partie {
-    private int _id;
-    private String _code;
+    private String _id;
 
-    public Partie(int id, String code) {
+    /**
+     * Constructeur
+     * @param id
+     */
+    public Partie(String id) {
         _id = id;
-        _code = code;
     }
 
-    public int get_id() {
+    /**
+     * Retourne le code hexa de la partie
+     * @return
+     */
+    public String get_id() {
         return _id;
-    }
-
-    public String get_code() {
-        return _code;
     }
 
     
