@@ -1,0 +1,46 @@
+.container {
+    display: flex;
+    justify-content: space-between;
+    width: 90%;
+    height: 90%;
+    margin-top: 20px;
+}
+
+.side-panel {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-left: 20px;
+    width: 30%;
+}
+
+.hint-box {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    height: 45%;
+    color: black;
+}
+
+
+.hint-box h2, .input-box h2 {
+    margin-top: 0;
+    margin-bottom: 20px;
+}
+
+.input-box input[type="text"], .input-box input[type="number"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    font-size: 16px;
+    border: 2px solid #ccc;
+    border-radius: 8px;
+    outline: none;
+}
+
+.input-box input[type="text"]:focus, .input-box input[type="number"]:focus {
+    border-color: #4691ff;
+}
+
+

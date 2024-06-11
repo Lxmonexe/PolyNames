@@ -1,4 +1,4 @@
-import { GameService } from "./services/services-game"
+import { GameService } from "./services/services-game.js"
 
 function createGameButton(){
     let button = document.querySelector("#create-game")
@@ -39,13 +39,17 @@ function joinGameWithCode(){
     window.location.href="choix.html"
 }
 
-function joinGame(){
+async function joinGame(){
     const pseudo = document.querySelector("#pseudo").value
     let randomHex = Math.floor(Math.random()*16777215).toString(6)
     randomHex = "#" + randomHex
-    const GameService = new GameService()
-    GameService.postGameCode(randomHex)
-    window.location.href="choix.html"
+    try {
+        const data = await GameService.postGameCode(randomHex)
+        console.log(data)
+        window.location.href = "choix.html"
+    } catch (error) {
+        console.error('Error posting game code:', error)
+    }
 }
 
 function run(){
