@@ -24,6 +24,22 @@ public class JoueurDAO {
         }
     }
 
+    public int getIdJoueurByPseudo(String pseudo) throws SQLException {
+        PolyNamesDatabase pbd = new PolyNamesDatabase();
+        int idJoueur = 0;
+        String query = "SELECT `id` FROM `joueur`WHERE `pseudo`= ?";
+        try (PreparedStatement stmt = pbd.prepareStatement(query)) {
+            stmt.setString(1, pseudo);
+            try (ResultSet rs = stmt.executeQuery()) {
+                if(rs.next()){
+                    idJoueur = rs.getInt("id");
+                    return idJoueur;
+                }
+            }
+        }
+        return idJoueur;
+    }
+
     public Joueur findById(int id) throws SQLException {
         PolyNamesDatabase pbd = new PolyNamesDatabase();
         String query = "SELECT * FROM `joueur` WHERE `id` = ?;";

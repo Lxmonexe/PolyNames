@@ -1,9 +1,22 @@
 package controllers;
 
+import java.util.concurrent.ExecutionException;
+
+import dao.ParticiperDAO;
 // import dao.ParticiperDAO;
 import webserver.WebServerContext;
 
 public class ParticiperController {
+
+
+    // public static void updateRole(WebServerContext context) {
+    //     try {
+    //         ParticiperDAO participerDAO = new ParticiperDAO();
+    //         participerDAO.updateRole(Integer.parseInt(context.getRequest().getParam("idPartie")), (context.getRequest().getParam("pseudo")));
+    //     } catch (Exception e) {
+    //         // TODO: handle exception
+    //     }
+    // }
 
     // public static void getRoleById(WebServerContext context){
     //     try {
