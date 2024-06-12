@@ -1,10 +1,18 @@
 import {cardsView}  from "./view/cardsView.js"
 import { MOWview } from "./view/MOWview.js"
+import { CardGridService } from "./services/services-grid.js";
+
 
 function run(){
     const view = new cardsView()
-    view.generateCardGrid()
-    hintButton()
+    viewCards()
+    //view.displayCards()
+    //hintButton()
+}
+
+async function viewCards(){
+    const data = await CardGridService.getGrid("93c3");
+    console.log(data);
 }
 
 function hintButton(){

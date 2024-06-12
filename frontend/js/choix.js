@@ -27,7 +27,7 @@ function addTest(){
 
 async function test(){
     console.log("test");
-    const data = await CardGridService.getGrid("67875");
+    const data = await CardGridService.createGrid("93c3");
     console.log(data);
     
 }

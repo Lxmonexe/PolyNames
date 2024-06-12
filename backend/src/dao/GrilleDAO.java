@@ -12,6 +12,7 @@ import database.PolyNamesDatabase;
 import models.Grille;
 import models.Mot;
 import models.Partie;
+import models.Carte;
 
 public class GrilleDAO {
 
@@ -72,22 +73,21 @@ public class GrilleDAO {
     //     return null;
     // }
 
-    public ArrayList<String> findAll(String idPartie) throws SQLException {
+    public ArrayList<Carte> findAll(String idPartie) throws SQLException {
         PolyNamesDatabase pbd = new PolyNamesDatabase();
-        ArrayList<String> mots = new ArrayList<>();
-        String query = "SELECT `mot`.`texte` AS m FROM `grille` INNER JOIN `mot` ON `mot`.`id` = `grille`.`idMot` WHERE `idPartie` = ?;";
-
-
-        try (PreparedStatement stmt = pbd.prepareStatement(query)) {
+        ArrayList<Carte> cartes = new ArrayList<Carte>();
+        String query = "SELECT `mot.texte`, `grille.couleur`, `grille.decouvert` FROM `grille` INNER JOIN `mot` ON `mot.id` = `grille.idMot` WHERE `idPartie` = ?;";
+        try {
+            PreparedStatement stmt = pbd.prepareStatement(query);
             stmt.setString(1, idPartie);
-            try (ResultSet rs = stmt.executeQuery()) {
-                
-                while (rs.next()) {
-                    mots.add(rs.getString("m"));
-                }
-            }
+            ResultSet rs = stmt.executeQuery(); 
+            while (rs.next()) {
+                cartes.add(new Carte(rs.getString("texte"), rs.getString("couleur"), rs.getBoolean("decouvert")));
+            };
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
-        return mots;
+        return cartes;
     }
 
     // public List<Grille> findAll(String idPartie) throws SQLException {

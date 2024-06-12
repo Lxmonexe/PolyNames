@@ -23,7 +23,8 @@ export class CardGridService {
         }
         );
         if(response.status === 200){
-            return response.json()
+            const data = await response.json();
+            return data
         }
     }
     
