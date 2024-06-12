@@ -8,7 +8,7 @@ function startGame(){
     const rolejoueur2 = document.querySelector("#rolejoueur2").value;
     if(rolejoueur1 === rolejoueur2){
         const error = document.querySelectorAll("#error-message");
-        error.innerHTML += "<p>Les rôles des joueurs doivent être différents</p>";
+        error.innerHTML = "<p>Les rôles des joueurs doivent être différents</p>";
         return;
     }
     // envoi des roles au backend
