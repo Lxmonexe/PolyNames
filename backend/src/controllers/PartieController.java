@@ -31,7 +31,7 @@ public class PartieController {
         } catch (Exception e) {
             // TODO: handle exception
             context.getResponse().send(500, "Internal Server Error: " + e.getMessage());
-    }
+    }}
 
 
     public static void existePartie(WebServerContext context){
