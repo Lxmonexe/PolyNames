@@ -32,6 +32,21 @@ public class PartieController {
             // TODO: handle exception
             context.getResponse().send(500, "Internal Server Error: " + e.getMessage());
     }
+
+
+    public static void existePartie(WebServerContext context){
+        PartieDAO partieDAO = new PartieDAO();
+        Boolean existePartie = false;
+        try {
+            existePartie = partieDAO.existPartie(context.getRequest().getParam("partieid"));
+            if(existePartie)
+                context.getResponse().ok("Cette partie existe");
+        } catch (Exception e) {
+            // TODO: handle exception
+            context.getResponse().send(500, "Internal Server Error: " + e.getMessage());
+        }
+    }
+
     private static String generateHexCode(int length) {
         StringBuilder code = new StringBuilder(length);
         for (int i = 0; i < length; i++) {

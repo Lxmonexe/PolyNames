@@ -38,6 +38,22 @@ public class PartieDAO {
         return null;
     }
 
+    public Boolean existPartie(String code)throws SQLException {
+        PolyNamesDatabase pbd = new PolyNamesDatabase();
+        Boolean exists = false;
+        String query = "SELECT * FROM `partie` WHERE `id` = ?;";
+        try (PreparedStatement stmt = pbd.prepareStatement(query)) {
+            stmt.setString(1, code);
+            try (ResultSet rs = stmt.executeQuery()) {
+                if (rs.next()) {
+                    exists = true;
+                    return exists;
+                }
+            }
+        }
+        return null;
+    }
+
     // public List<Partie> findAll() throws SQLException {
     //     PolyNamesDatabase pbd = new PolyNamesDatabase();
     //     List<Partie> parties = new ArrayList<>();
