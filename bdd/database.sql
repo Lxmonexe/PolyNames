@@ -1,7 +1,7 @@
 -- Création de la table Joueur (Player)
 CREATE TABLE `joueur` (
     `id` INT AUTO_INCREMENT PRIMARY KEY,
-    `pseudo` VARCHAR(255) NOT NULL
+    `pseudo` VARCHAR(255) UNIQUE NOT NULL
 );
 
 -- Création de la table Partie (Game)
@@ -32,6 +32,7 @@ CREATE TABLE `grille` (
     `idPartie` VARCHAR(7) NOT NULL,
     `idMot` INT NOT NULL,
     `couleur` VARCHAR(50) NOT NULL,
+    `decouvert` BOOLEAN NOT NULL DEFAULT FALSE,
     FOREIGN KEY (`idPartie`) REFERENCES `partie`(`id`),
     FOREIGN KEY (`idMot`) REFERENCES `mot`(`id`)
     -- UNIQUE (`idPartie`, `idMot`) -- Mot unique part grille dans une partie
