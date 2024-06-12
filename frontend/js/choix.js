@@ -29,6 +29,7 @@ async function test(){
     console.log("test");
     const data = await CardGridService.getGrid("67875");
     console.log(data);
+    
 }
 
 function run(){

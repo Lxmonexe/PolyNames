@@ -1,5 +1,18 @@
 
 export class CardGridService {
+
+    static async createGrid(codePartie){
+        const response = await fetch(`http://localhost:8080/partie/code/creer/grille/${codePartie}`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        }
+        );
+        if(response.status === 200){
+            return response
+        }
+    }
     
     static async getGrid(codePartie){
         const response = await fetch(`http://localhost:8080/partie/code/grille/${codePartie}`, {
