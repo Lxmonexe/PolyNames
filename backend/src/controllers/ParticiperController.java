@@ -1,13 +1,25 @@
 package controllers;
 
+import java.sql.SQLException;
 import java.util.concurrent.ExecutionException;
 
+import dao.JoueurDAO;
 import dao.ParticiperDAO;
 // import dao.ParticiperDAO;
 import webserver.WebServerContext;
 
 public class ParticiperController {
 
+     public static void createParticipant(WebServerContext context){
+        ParticiperDAO participerDAO = new ParticiperDAO();
+        try {
+            
+            participerDAO.createParticipant(Integer.parseInt(context.getRequest().getParam("id")), context.getRequest().getParam("pseudo"));
+            context.getResponse().ok("Joueur inséré dans la bdd");
+        } catch (SQLException e) {
+            context.getResponse().send(500, "Internal Server Error: " + e.getMessage());
+        }
+    }
 
     // public static void updateRole(WebServerContext context) {
     //     try {

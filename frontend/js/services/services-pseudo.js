@@ -5,17 +5,15 @@ export class PseudoService {
         return data;
     }
 
-    static async postPseudo(pseudo){
-        const response = await fetch(`http://localhost:8080/partie/creer/joueur/${pseudo}`, {
+    static async postPseudo(pseudo, codePartie){
+        const response = await fetch(`http://localhost:8080/partie/creer/joueur/${codePartie}/${pseudo}`, {
             method: 'POST',
-            body: JSON.stringify(pseudo),
-            headers: {
-                'Content-type': 'application/json; charset=UTF-8',
-            },
         });
         if (response.status === 200) {
             const data = await response.json();
             return data;
         }
     }
+
+
 }

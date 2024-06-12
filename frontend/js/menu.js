@@ -52,11 +52,9 @@ function joinGameWithCode(){
 async function joinGame(){
     const pseudo = document.querySelector("#pseudo").value
     let randomHex = Math.floor(Math.random()*654321).toString(16)
-    console.log(randomHex)
     try {
         const data = await GameService.postGameCode(randomHex)
-        const datapseudo = await PseudoService.postPseudo(pseudo)
-        console.log(data)
+        const datapseudo = await PseudoService.postPseudo(pseudo, randomHex)
         console.log(datapseudo)
         //window.location.href = "choix.html"
     } catch (error) {

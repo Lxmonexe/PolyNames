@@ -4,11 +4,14 @@ function buttonListener(){
 }
 
 function startGame(){
-    const rolejoueur1 = document.querySelector("#rolejoueur1").value;
-    const rolejoueur2 = document.querySelector("#rolejoueur2").value;
+    const rolejoueur1 = document.querySelector("#rolejoueur1").selectedIndex;
+    const rolejoueur2 = document.querySelector("#rolejoueur2").selectedIndex;
+    console.log(rolejoueur1);
+    console.log(rolejoueur2);
+    console.log("test");
     if(rolejoueur1 === rolejoueur2){
         const error = document.querySelectorAll("#error-message");
-        error.innerHTML = "<p>Les rôles des joueurs doivent être différents</p>";
+        error.innerHTML += "<p>Les rôles des joueurs doivent être différents</p>";
         return;
     }
     // envoi des roles au backend
