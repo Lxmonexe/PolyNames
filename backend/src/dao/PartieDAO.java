@@ -51,7 +51,7 @@ public class PartieDAO {
                 }
             }
         }
-        return null;
+        return exists;
     }
 
     // public List<Partie> findAll() throws SQLException {

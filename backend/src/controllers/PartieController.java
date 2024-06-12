@@ -40,12 +40,14 @@ public class PartieController {
         try {
             existePartie = partieDAO.existPartie(context.getRequest().getParam("partieid"));
             if(existePartie){
-                context.getResponse().json(existePartie);
                 context.getResponse().ok("Cette partie existe");
+            }
+            else{
+                context.getResponse().notFound("Cette partie n'existe pas");;
             }
         } catch (Exception e) {
             // TODO: handle exception
-            context.getResponse().json(existePartie);
+            
             context.getResponse().send(500, "Internal Server Error: " + e.getMessage());
         }
     }
