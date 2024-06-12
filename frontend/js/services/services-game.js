@@ -12,4 +12,16 @@ export class GameService{
         
         return 
     }
+
+    static async getPartie(id){
+        let data = null;
+        const response = await fetch(`http://localhost:8080/partie/rejoindre/code/${id}`);
+        if (response.status === 200) {
+            return true;
+        }
+        if (response.status === 404 || response.status === 500) {
+            return false;
+        }
+    }
+    
 }
