@@ -22,15 +22,4 @@ public class Carte {
         return _decouvert;
     }
 
-    public void set_decouvert(Boolean decouvert) {
-        _decouvert = decouvert;
-    }
-
-    public void set_couleur(String couleur) {
-        _couleur = couleur;
-    }
-
-    public void set_texte(String texte) {
-        _texte = texte;
-    }
 }

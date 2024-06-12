@@ -14,10 +14,10 @@ card {
     display: flex;
     width: 150px;
     height: 75px;
-
     border: 5px solid;
     border-radius: 10px;
     background-color: white;
+    
 }
 
 card.blue {
@@ -28,11 +28,18 @@ card.black {
     border-color: rgb(0, 0, 0);
 }
 
-card.grey{
+card.grey {
     border-color: rgb(128, 128, 128);
 
 }
 
 card:hover {
     transform: scale(1.05);
+}
+
+card p {
+    margin: auto;
+    font-size: 20px;
+    font-weight: bold;
+    color: black;
 }

@@ -76,7 +76,7 @@ public class GrilleDAO {
     public ArrayList<Carte> findAll(String idPartie) throws SQLException {
         PolyNamesDatabase pbd = new PolyNamesDatabase();
         ArrayList<Carte> cartes = new ArrayList<Carte>();
-        String query = "SELECT `mot.texte`, `grille.couleur`, `grille.decouvert` FROM `grille` INNER JOIN `mot` ON `mot.id` = `grille.idMot` WHERE `idPartie` = ?;";
+        String query = "SELECT `mot`.`texte`, `grille`.`couleur`, `grille`.`decouvert` FROM `grille` JOIN `mot` ON `mot`.`id` = `grille`.`idMot` WHERE `idPartie` = ?;";
         try {
             PreparedStatement stmt = pbd.prepareStatement(query);
             stmt.setString(1, idPartie);

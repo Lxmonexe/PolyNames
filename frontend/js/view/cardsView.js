@@ -5,11 +5,13 @@ export class cardsView{
     }
     #displayCard(card){
         const grid = document.querySelector('gridCards');
-        const cardHTML = `<card class=${card.couleur}>${card.mots}</card>`;	
+        const cardHTML = `<card class=${card._couleur}><p>${card._texte}</p></card>`;	
+        grid.innerHTML += cardHTML;
+        console.log(cardHTML);
 }   
-    displayCards(codePartie = "67875"){
+    displayCards(codePartie = "93c3"){
         CardGridService.getGrid(codePartie).then(data => {
-            console.log(data);
+            //console.log(data);
             data.forEach(card => {
                 this.#displayCard(card);
             });
