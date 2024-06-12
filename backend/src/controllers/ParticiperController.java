@@ -13,9 +13,8 @@ public class ParticiperController {
      public static void createParticipant(WebServerContext context){
         ParticiperDAO participerDAO = new ParticiperDAO();
         try {
-            
-            participerDAO.createParticipant(Integer.parseInt(context.getRequest().getParam("id")), context.getRequest().getParam("pseudo"));
-            context.getResponse().ok("Joueur inséré dans la bdd");
+            participerDAO.createParticipant(context.getRequest().getParam("partieid"), context.getRequest().getParam("pseudo").toString(), context.getRequest().getParam("role").toString());
+            context.getResponse().ok("Participant inséré dans la bdd");
         } catch (SQLException e) {
             context.getResponse().send(500, "Internal Server Error: " + e.getMessage());
         }

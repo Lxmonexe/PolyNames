@@ -1,6 +1,8 @@
 import { GameService } from "./services/services-game.js"
 import {PseudoService} from "./services/services-pseudo.js"
 
+let codePartie = null
+
 function createGameButton(){
     let button = document.querySelector("#create-game")
     button.addEventListener("click",createGame)
@@ -8,14 +10,8 @@ function createGameButton(){
 
 function startGameButton(){
     const button = document.querySelector("#enter-game")
-    const code = document.querySelector("#code-game")
-    code.addEventListener("input",()=>{
-        if(GameService.getPartie(code.value)){
-            button.disabled = false
-        }else{
-            button.disabled = true
-        }
-    })
+    codePartie = document.querySelector("#code-game").value
+    console.log(codePartie)
     button.addEventListener("click",getPseudo)
 }
 
@@ -33,8 +29,8 @@ function createGame(){
 
 function getPseudo(){
     
-        const div = document.querySelector("div")
-        div.innerHTML = `<p>
+    const div = document.querySelector("div")
+    div.innerHTML = `<p>
                             <input type='text' id='pseudo' placeholder="Entrez votre pseudo">
                         </p>
                         <p>
@@ -44,9 +40,10 @@ function getPseudo(){
         button.addEventListener("click",joinGameWithCode)
 }
 
-function joinGameWithCode(){
+async function joinGameWithCode(){
     const pseudo = document.querySelector("#pseudo").value
-    window.location.href="choix.html"
+    const data = await PseudoService.postPseudo(pseudo, codePartie, "MDI")
+    //window.location.href="choix.html"
 }
 
 async function joinGame(){
@@ -54,7 +51,7 @@ async function joinGame(){
     let randomHex = Math.floor(Math.random()*654321).toString(16)
     try {
         const data = await GameService.postGameCode(randomHex)
-        const datapseudo = await PseudoService.postPseudo(pseudo, randomHex)
+        const datapseudo = await PseudoService.postPseudo(pseudo, randomHex, "MDM")
         console.log(datapseudo)
         //window.location.href = "choix.html"
     } catch (error) {

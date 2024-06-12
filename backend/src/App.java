@@ -20,8 +20,7 @@ public class App {
 
 
         webServer.getRouter().post("/partie/code/:partieid/", (WebServerContext context) -> { PartieController.createPartie(context); });
-        webServer.getRouter().get("/partie/rejoindre/code/:partieid", (WebServerContext context) -> { PartieController.existePartie(context); });
-        webServer.getRouter().post("/partie/creer/joueur/:id/:pseudo", (WebServerContext context) -> { JoueurController.createJoueur(context); ParticiperController.createParticipant(context); });
+        webServer.getRouter().post("/partie/creer/joueur/:partieid/:pseudo/:role", (WebServerContext context) -> { JoueurController.createJoueur(context); ParticiperController.createParticipant(context); });
         // webServer.getRouter().get("/partie/:code", (WebServerContext context) -> { ParticiperController.getRoleById(context);}); //fonctionne
         // webServer.getRouter().get("/partie/:code:/:joueurid/", (WebServerContext context) -> { ParticiperController.getRoleById(context);}); //fonctionne
         // webServer.getRouter().get("/partie/:code/:joueurid/:role", (WebServerContext context) -> { GrilleController.findAll(context);}); //fonctionne

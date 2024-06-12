@@ -39,6 +39,20 @@ public class ParticiperDAO {
         }
     }
 
+    public void createParticipant(String idPartie, String pseudoJoueur, String role) throws SQLException {
+        PolyNamesDatabase pbd = new PolyNamesDatabase();
+        String query = "INSERT INTO `participer` (`idJoueur`, `idPartie`, `role`, `score`) VALUES (?, ?, ?, ?);";
+        
+        JoueurDAO joueurDAO = new JoueurDAO();
+
+        try (PreparedStatement stmt = pbd.prepareStatement(query)) {
+            stmt.setInt(1, joueurDAO.getIdJoueurByPseudo(pseudoJoueur));
+            stmt.setString(2, idPartie);
+            stmt.setString(3, role);
+            stmt.setInt(4, 0);
+            stmt.execute();
+        }
+    }
     private String getAvailableRole(int idPartie) throws SQLException {
         PolyNamesDatabase pbd = new PolyNamesDatabase();
         String query = "SELECT COUNT(*) AS count FROM `participer` WHERE `idPartie` = ? AND (`role` = 'MDM' OR `role` = 'MDI');";
