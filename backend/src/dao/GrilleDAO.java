@@ -72,25 +72,44 @@ public class GrilleDAO {
     //     return null;
     // }
 
-    public List<Grille> findAll(String idPartie) throws SQLException {
+    public ArrayList<String> findAll(String idPartie) throws SQLException {
         PolyNamesDatabase pbd = new PolyNamesDatabase();
-        List<Grille> grilles = new ArrayList<>();
-        String query = "SELECT * FROM `grille` WHERE `idPartie` = ?;";
+        ArrayList<String> mots = new ArrayList<>();
+        String query = "SELECT `mot`.`texte` AS m FROM `grille` INNER JOIN `mot` ON `mot`.`id` = `grille`.`idMot` WHERE `idPartie` = ?;";
+
 
         try (PreparedStatement stmt = pbd.prepareStatement(query)) {
             stmt.setString(1, idPartie);
             try (ResultSet rs = stmt.executeQuery()) {
-                MotDAO motDAO = new MotDAO();
                 
                 while (rs.next()) {
-                    Mot mot = motDAO.findById(rs.getInt("idMot"));
-
-                    grilles.add(new Grille(rs.getInt("id"),idPartie, mot.get_id(), rs.getString("couleur"), rs.getBoolean("decouvert")));
+                    mots.add(rs.getString("m"));
                 }
             }
         }
-        return grilles;
+        return mots;
     }
+
+    // public List<Grille> findAll(String idPartie) throws SQLException {
+    //     PolyNamesDatabase pbd = new PolyNamesDatabase();
+    //     List<Grille> grilles = new ArrayList<>();
+    //     String query = "SELECT `mot`.`texte` FROM `grille` INNER JOIN `partie` ON WHERE `idPartie` = ?;";
+    //     String query = "SELECT `mot`.`texte` FROM `grille` INNER JOIN `mot` ON `mot`.`id` = `grille`.`idMot` WHERE `idPartie` = ?;"
+
+    //     try (PreparedStatement stmt = pbd.prepareStatement(query)) {
+    //         stmt.setString(1, idPartie);
+    //         try (ResultSet rs = stmt.executeQuery()) {
+    //             MotDAO motDAO = new MotDAO();
+                
+    //             while (rs.next()) {
+    //                 Mot mot = motDAO.findById(rs.getInt("idMot"));
+
+    //                 grilles.add(new Grille(rs.getInt("id"),idPartie, mot.get_id(), rs.getString("couleur"), rs.getBoolean("decouvert")));
+    //             }
+    //         }
+    //     }
+    //     return grilles;
+    // }
 
     public void delete(int id) throws SQLException {
         PolyNamesDatabase pbd = new PolyNamesDatabase();
