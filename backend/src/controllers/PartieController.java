@@ -39,8 +39,10 @@ public class PartieController {
         Boolean existePartie = false;
         try {
             existePartie = partieDAO.existPartie(context.getRequest().getParam("partieid"));
-            if(existePartie)
+            if(existePartie){
+                context.getResponse().json(existePartie);
                 context.getResponse().ok("Cette partie existe");
+            }
         } catch (Exception e) {
             // TODO: handle exception
             context.getResponse().send(500, "Internal Server Error: " + e.getMessage());
