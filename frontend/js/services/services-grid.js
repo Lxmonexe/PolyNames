@@ -1,10 +1,17 @@
 
 export class CardGridService {
     
-    async getCardsd(){
-        const response = await fetch('');
-        const data = await response.json();
-        return data;
+    static async getGrid(codePartie){
+        const response = await fetch(`http://localhost:8080/partie/code/grille/${codePartie}`, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        }
+        );
+        if(response.status === 200){
+            return response.json()
+        }
     }
     
 }

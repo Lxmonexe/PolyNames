@@ -12,9 +12,8 @@ public class GrilleController {
     public static void create(WebServerContext context){
         GrilleDAO grilleDAO = new GrilleDAO();
         try {
-            grilleDAO.create(context.getRequest().getParam("id"));
-            context.getResponse().json(grilleDAO.findAll(context.getRequest().getParam("id")));
-            context.getResponse().ok("Grille ok");
+            grilleDAO.create(context.getRequest().getParam("partieid"));
+            context.getResponse().json(grilleDAO.findAll(context.getRequest().getParam("partieid")));
         } catch (SQLException e) {
             context.getResponse().send(500, "Internal Server Error: " + e.getMessage());
         }

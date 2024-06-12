@@ -1,3 +1,5 @@
+import { CardGridService } from "./services/services-grid.js";
+
 function buttonListener(){
     let button = document.querySelector("#start-game");
     button.addEventListener("click", startGame);
@@ -18,10 +20,21 @@ function startGame(){
     //window.location.href = "game.html";
 }
 
+function addTest(){
+    const button = document.querySelector("#test");
+    button.addEventListener("click", test);
+}
+
+async function test(){
+    console.log("test");
+    const data = await CardGridService.getGrid("67875");
+    console.log(data);
+}
 
 function run(){
-    selectListener();
-    buttonListener();
+    //selectListener();
+    //buttonListener();
+    addTest();
 }
 
 window.addEventListener('load', run);

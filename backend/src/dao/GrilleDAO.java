@@ -80,14 +80,12 @@ public class GrilleDAO {
         try (PreparedStatement stmt = pbd.prepareStatement(query)) {
             stmt.setString(1, idPartie);
             try (ResultSet rs = stmt.executeQuery()) {
-                PartieDAO partieDAO = new PartieDAO();
                 MotDAO motDAO = new MotDAO();
                 
                 while (rs.next()) {
-                    Partie partie = partieDAO.findById(rs.getString("idPartie"));
                     Mot mot = motDAO.findById(rs.getInt("idMot"));
 
-                    grilles.add(new Grille(rs.getInt("id"), partie.get_id(), mot.get_id(), rs.getString("couleur"), rs.getBoolean("decouvert")));
+                    grilles.add(new Grille(rs.getInt("id"),idPartie, mot.get_id(), rs.getString("couleur"), rs.getBoolean("decouvert")));
                 }
             }
         }
