@@ -24,7 +24,7 @@ public class App {
         webServer.getRouter().post("/partie/creer/joueur/:partieid/:pseudo/:role", (WebServerContext context) -> { JoueurController.createJoueur(context); ParticiperController.createParticipant(context); });
         webServer.getRouter().post("/partie/code/creer/grille/:partieid", (WebServerContext context) -> { GrilleController.create(context); });
         webServer.getRouter().put("/partie/code/grille/:partieid", (WebServerContext context) -> { GrilleController.getGrille(context); });
-        
+        webServer.getRouter().post("/partie/code/score/:partieid/:score", (WebServerContext context) -> { ParticiperController.updateScore(context); });
 
         webServer.getRouter().post("/partie/indice/:mot/:nbcarte", (WebServerContext context) -> { 
             WebServerResponse response = context.getResponse();

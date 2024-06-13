@@ -34,4 +34,15 @@ export class GameService{
             return data;
         }
     }
+
+    static async updateScore(id, score){
+        let data = null;
+        const response = await fetch(`http://localhost:8080/partie/code/score/${id}/${score}`, {
+            method: "POST",
+        });
+        if (response.status === 200) {
+            data = await response;    
+            return data;
+        }
+    }
 }

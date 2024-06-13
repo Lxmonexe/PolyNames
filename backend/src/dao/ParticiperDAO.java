@@ -94,19 +94,17 @@ public class ParticiperDAO {
     //     return participations;
     // }
 
-    // public void updateScore(Partie partie, Joueur joueur, int score) throws SQLException {
-    //     PolyNamesDatabase pbd = new PolyNamesDatabase("localhost", 33006, "poly_names", "root", "");
+    public void updateScore(String codePartie, int score) throws SQLException {
+        PolyNamesDatabase pbd = new PolyNamesDatabase();
 
-    //     String query = "UPDATE `participer` INNER JOIN `partie` ON `partie`.`id` = `participer`.`idPartie` SET `participer`.`score` = ? WHERE `partie`.`code` = ?";
+        String query = "UPDATE `participer` JOIN `partie` ON `partie`.`id` = `participer`.`idPartie` SET `participer`.`score` = ? WHERE `partie`.`code` = ?;";
 
-    //     try (PreparedStatement stmt = pbd.prepareStatement(query)) {
-    //         stmt.setInt(1, score);
-    //         stmt.setString(2, partie.get_code());
-    //         stmt.setInt(2, joueur.get_id());
-
-    //         stmt.execute();
-    //     }
-    // }
+        try (PreparedStatement stmt = pbd.prepareStatement(query)) {
+            stmt.setInt(1, score);
+            stmt.setString(2, codePartie);
+            stmt.execute();
+        }
+    }
 
     public void updateRole(int idPartie, int idJoueur, String role) throws SQLException {
         PolyNamesDatabase pbd = new PolyNamesDatabase();
