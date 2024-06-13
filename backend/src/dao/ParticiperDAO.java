@@ -144,4 +144,20 @@ public class ParticiperDAO {
             stmt.execute();
         }
     }
+
+    public int getScore(String idPartie) throws SQLException {
+        PolyNamesDatabase pbd = new PolyNamesDatabase();
+        String query = "SELECT `score` FROM `participer` WHERE `idPartie` = ?;";
+        int score = 0;
+        try (PreparedStatement stmt = pbd.prepareStatement(query)) {
+            stmt.setString(1, idPartie);
+            try (ResultSet rs = stmt.executeQuery()) {
+                while (rs.next()) {
+                    score += rs.getInt("score");
+                }
+            }
+        }
+        score = score / 2;
+        return score;
+    }
 }

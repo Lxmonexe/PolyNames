@@ -97,12 +97,21 @@ async function showHint(){
         
 }
 
+async function getScore(){
+    sseClient.subscribe("score", (data) => {
+        const h3 = document.querySelector('h3')
+        data = JSON.parse(data)
+        h3.innerHTML = `Score: ${data.scorePartie}`
+    })
+}
+
 function run(){
     
     displayCardsMDI(localStorage.getItem("code"))
     connectSSE()
     showHint()
     nextTurnButton()
+    getScore()
 }
 
 window.addEventListener('load', run)

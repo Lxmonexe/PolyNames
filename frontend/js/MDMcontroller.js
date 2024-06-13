@@ -61,12 +61,20 @@ async function nextTurn(){
     })
 }
 
+async function getScore(){
+    sseClient.subscribe("score", (data) => {
+        const h3 = document.querySelector('h3')
+        data = JSON.parse(data)
+        h3.innerHTML = `Score: ${data.scorePartie}`
+    })
+}
+
 function run(){
     displayCardsMDM(localStorage.getItem("code"));
     nextTurn();
     connectSSE();
     hintSubmit();
-   
+    getScore();
 }
 
 window.addEventListener('load', run);
