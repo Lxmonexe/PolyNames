@@ -26,6 +26,9 @@ function startGame(){
 
 
 function run(){
+    const codePartie = localStorage.getItem("code");
+    const code = document.querySelector("#code-partie");
+    code.innerHTML = codePartie;
     buttonListener();
     
 }

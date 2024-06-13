@@ -23,11 +23,10 @@ export class MDMview{
         const grid = document.querySelector('gridCards');
         const cardHTML = `<card class=${card._couleur} id="MDM"><p>${card._texte}</p></card>`;	
         grid.innerHTML += cardHTML;
-        console.log(cardHTML);
+        
 }   
     displayCardsMDM(codePartie){
         CardGridService.getGrid(codePartie).then(data => {
-            //console.log(data);
             data.forEach(card => {
                 this.#displayCard(card);
             });

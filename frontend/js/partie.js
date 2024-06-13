@@ -1,14 +1,25 @@
-import {cardsView}  from "./view/cardsView.js"
-import { MDMview } from "./view/MDMview.js"
-import { CardGridService } from "./services/services-grid.js";
 
+import { MDMview } from "./view/MDMview.js"
+import { MDIview } from "./view/MDIview.js"
 
 async function run(){
+    if(localStorage.getItem("role") === "MDM"){
+        MDMcontroller()
+    } else if(localStorage.getItem("role") === "MDI"){
+        MDIcontroller()
+    }
     
-    
-    const viewMOW = new MDMview()
-    viewMOW.displayCardsMDM(sessionStorage.getItem("code"))
-    //hintButton()
+}
+ 
+function MDMcontroller(){
+    const view = new MDMview()
+    view.displayCardsMDM(localStorage.getItem("code"))
+    hintButton()
+}
+
+function MDIcontroller(){
+    const view = new MDIview()
+    view.displayCardsMDI(localStorage.getItem("code"))
 }
 
 
