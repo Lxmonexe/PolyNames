@@ -97,7 +97,7 @@ public class ParticiperDAO {
     public void updateScore(String codePartie, int score) throws SQLException {
         PolyNamesDatabase pbd = new PolyNamesDatabase();
 
-        String query = "UPDATE `participer` JOIN `partie` ON `partie`.`id` = `participer`.`idPartie` SET `participer`.`score` = ? WHERE `partie`.`code` = ?;";
+        String query = "UPDATE `participer` JOIN `partie` ON `partie`.`id` = `participer`.`idPartie` SET `participer`.`score` = ? WHERE `partie`.`id` = ?;";
 
         try (PreparedStatement stmt = pbd.prepareStatement(query)) {
             stmt.setInt(1, score);

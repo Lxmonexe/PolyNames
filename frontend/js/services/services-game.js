@@ -41,6 +41,17 @@ export class GameService{
             method: "POST",
         });
         if (response.status === 200) {
+            data = response;    
+            return data;
+        }
+    }
+
+    static async nextTurn(){
+        let data = null;
+        const response = await fetch(`http://localhost:8080/partie/tour-suivant`, {
+            method: "POST",
+        });
+        if (response.status === 200) {
             data = await response;    
             return data;
         }
