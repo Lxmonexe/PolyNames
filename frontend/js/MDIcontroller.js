@@ -44,39 +44,47 @@ async function updateScore(score){
 
 function cardEventListener(){
     let cardClicked = 1
+    let blueCard = 8
     const cards = document.querySelectorAll('card')
-        for(const card of cards){
-            console.log("test")
-            card.addEventListener('click', (target) => {
-            
-            if(target.target.id === "gris"){
-                card.style.backgroundColor = "grey"
-                card.id = "decouvert"
-                nextTurn()
-                localStorage.setItem("intuition", 0)
-            }
-            else if(target.target.id === "bleu"){
-                if(cardClicked <= localStorage.getItem("nbcarte")){
-                    card.style.backgroundColor = "blue"
-                    card.id = "decouvert"
-                    updateScore(cardClicked)
-                    cardClicked += 1 
-                }
-                else if(cardClicked > localStorage.getItem("nbcarte")){
-                    card.style.backgroundColor = "blue"
-                    updateScore(cardClicked*cardClicked)
-                    card.id = "decouvert"
-                    cardClicked +=1 
-                    
-                }
-                
-            }
-            else if(target.target.id === "noir" ){
-                card.style.backgroundColor = "black"
-                console.log("testnoir")
-                }
-            })
+    for(const card of cards){
+        console.log("test")
+        card.addEventListener('click', (target) => {
+        
+        if(target.target.id === "gris"){
+            card.style.backgroundColor = "grey"
+            card.id = "decouvert"
+            nextTurn()
+            localStorage.setItem("intuition", 0)
         }
+        else if(target.target.id === "bleu"){
+            if(cardClicked <= localStorage.getItem("nbcarte")){
+                card.style.backgroundColor = "blue"
+                card.id = "decouvert"
+                updateScore(cardClicked)
+                cardClicked += 1 
+                blueCard -= 1
+            }
+            else if(cardClicked > localStorage.getItem("nbcarte")){
+                card.style.backgroundColor = "blue"
+                updateScore(cardClicked*cardClicked)
+                card.id = "decouvert"
+                cardClicked +=1 
+                blueCard -= 1
+            }
+            
+        }
+        else if(target.target.id === "noir" ){
+            card.style.backgroundColor = "black"
+            console.log("testnoir")
+            updateScore(0)
+            card.id = "decouvert"
+            postEndGame()
+        }
+        else if(blueCard === 0){
+            postEndGame()
+        }
+        })
+    }
 }
 
 async function showHint(){
@@ -105,6 +113,27 @@ async function getScore(){
     })
 }
 
+async function postEndGame(){
+    const data = await GameService.endGame(localStorage.getItem("code"))
+}
+
+async function endGame(){
+    sseClient.subscribe("finPartie", (data) => {
+        const h1 = document.querySelector('h1')
+        const h3 = document.querySelector('h3')
+        const container = document.querySelector('.container')
+        data = JSON.parse(data)
+        h1.innerHTML = `Fin de la partie : ${data.statutFin}`
+        h3.innerHTML = `Score: ${data.scorePartie}`
+        container.innerHTML = "<button id='end-game'>Rejouer</button>"
+        const button = document.querySelector('#end-game')
+        button.addEventListener('click', () => {
+            localStorage.setItem("role","")
+            window.location.href = "partie.html"
+        })
+    })
+}
+
 function run(){
     
     displayCardsMDI(localStorage.getItem("code"))
@@ -112,6 +141,7 @@ function run(){
     showHint()
     nextTurnButton()
     getScore()
+    endGame()
 }
 
 window.addEventListener('load', run)

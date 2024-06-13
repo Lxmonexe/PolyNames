@@ -7,22 +7,21 @@
     <link rel="stylesheet" href="/frontend/css/style.css">
 </head>
 <body>
-    <h1>Partie</h1>
-    <h3>Score : 0</h3>
-    <div class="container">
-    <grid>
-        <gridCards></gridCards>
-    </grid>
-    <div class="side-panel">
-        <div class="hint-box">
-            <h2>Indices</h2>
-            <p>Aucun indice pour le moment.</p>
-        </div>
-        <div class="input-box">
-            
-        </div>
-    </div>
-    </div>
+    <h1>Nouvelle partie</h1>
+    <div class="menu">
+        <p>
+            <input type="text"  size="30" id="code-game" placeholder="Entrez le code de la partie à rejoindre">
+        </p>
+        <p>
+            <button id='start'>Rejoindre une partie</button>
+        </p>
+        <p>
+            OU
+        </p>
+        <button id="create-game">
+            Créez une nouvelle partie
+        </button>
+    
     <script src="/frontend/js/partie.js" type="module"></script>
 </body>
 </html>

@@ -56,4 +56,15 @@ export class GameService{
             return data;
         }
     }
+
+    static async endGame(id){
+        let data = null;
+        const response = await fetch(`http://localhost:8080/partie/fin-partie/${id}`, {
+            method: "POST",
+        });
+        if (response.status === 200) {
+            data = await response;    
+            return data;
+        }
+    }
 }

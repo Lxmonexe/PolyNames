@@ -44,6 +44,25 @@ public class App {
             webServer.getSSE().emit("tourSuivant", "{}");
             response.ok("Tour suivant");
          });
+
+         webServer.getRouter().post("/partie/fin-partie/:idpartie", (WebServerContext context) -> { 
+            WebServerResponse response = context.getResponse();
+            int scorePartie = ParticiperController.getScore(context);
+            String statutFin = "";
+            if(scorePartie > 0){
+                statutFin = "gagné !";
+            }
+            else if(scorePartie == 0){
+                statutFin = "perdu...";
+            webServer.getSSE().emit("finPartie", "{ \"statutFin\": \"" + statutFin + "\", \"scorePartie\": \"" + scorePartie + "\"}");
+            }
+            else{
+                statutFin = "perdue";
+            }
+            webServer.getSSE().emit("finPartie", "{ \"statutFin\": \"" + statutFin + "\" }");
+            
+            response.ok("Fin de la partie");
+         });
         
         // webServer.getRouter().get("/partie/:code", (WebServerContext context) -> { ParticiperController.getRoleById(context);}); //fonctionne
         // webServer.getRouter().get("/partie/:code:/:joueurid/", (WebServerContext context) -> { ParticiperController.getRoleById(context);}); //fonctionne
