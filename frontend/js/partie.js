@@ -1,6 +1,6 @@
 import {SSEClient} from "./libs/sse-client.js"
-import { MDMview } from "./MDMview.js"
-import { MDIview } from "./MDIview.js"
+import { MDMview } from "./MDMcontroller.js"
+import { MDIview } from "./MDIcontroller.js"
 import { GameService } from "./services/services-game.js"
 
 let premierIndiceMDM = true
