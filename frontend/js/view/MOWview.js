@@ -1,3 +1,5 @@
+import { CardGridService } from "../services/services-grid.js";
+
 export class MOWview{
     
     hintSubmit() {
@@ -17,24 +19,18 @@ export class MOWview{
         hintList.innerHTML += `<p>${hint} - ${number}</p>`
     }
 
-    displayMOW(){
-        const cards = document.querySelectorAll("card");
-        for(const card of cards){
-            if(card.classList === "gris"){
-                card.classList.remove("gris");
-                card.classList.add("grey");
-            }
-            else if(card.id === "bleu"){
-                card.classList.remove("bleu");
-                card.classList.add("blue");
-            }
-            else if(card.id === "noir"){
-                card.classList.remove("noir");
-                card.classList.add("black");
-            }
-        }
-        
-        
-        
+    #displayCard(card){
+        const grid = document.querySelector('gridCards');
+        const cardHTML = `<card class=${card._couleur}><p>${card._texte}</p></card>`;	
+        grid.innerHTML += cardHTML;
+        console.log(cardHTML);
+}   
+    displayCardsMOW(codePartie = "93c3"){
+        CardGridService.getGrid(codePartie).then(data => {
+            //console.log(data);
+            data.forEach(card => {
+                this.#displayCard(card);
+            });
+        });
     }
 }

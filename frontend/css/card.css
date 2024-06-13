@@ -20,15 +20,15 @@ card {
     
 }
 
-card.blue {
+.bleu {
     border-color: rgb(23, 23, 207);
 }
 
-card.black {
+.noir {
     border-color: rgb(0, 0, 0);
 }
 
-card.grey {
+.gris {
     border-color: rgb(128, 128, 128);
 
 }

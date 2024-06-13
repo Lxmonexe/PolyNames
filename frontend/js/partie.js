@@ -4,12 +4,10 @@ import { CardGridService } from "./services/services-grid.js";
 
 
 async function run(){
-    const view = new cardsView()
+    
     
     const viewMOW = new MOWview()
-    await view.displayCards().then(() => {
-    viewMOW.displayMOW()
-    });
+    viewMOW.displayCardsMOW()
     //hintButton()
 }
 

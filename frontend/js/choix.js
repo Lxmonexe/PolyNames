@@ -33,9 +33,9 @@ async function test(){
 }
 
 function run(){
-    //selectListener();
-    //buttonListener();
-    addTest();
+    selectListener();
+    buttonListener();
+    //addTest();
 }
 
 window.addEventListener('load', run);
