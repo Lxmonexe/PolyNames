@@ -23,5 +23,15 @@ export class GameService{
             return false;
         }
     }
-    
+
+    static async postHint(hint, number){
+        let data = null;
+        const response = await fetch(`http://localhost:8080/partie/indice/${hint}/${number}`, {
+            method: "POST",
+        });
+        if (response.status === 200) {
+            data = await response;    
+            return data;
+        }
+    }
 }

@@ -5,6 +5,7 @@ import controllers.PartieController;
 // import dao.GrilleDAO;
 import webserver.WebServer;
 import webserver.WebServerContext;
+import webserver.*;
 
 public class App {
     public static void main(String[] args) throws Exception {
@@ -24,6 +25,14 @@ public class App {
         webServer.getRouter().post("/partie/code/creer/grille/:partieid", (WebServerContext context) -> { GrilleController.create(context); });
         webServer.getRouter().put("/partie/code/grille/:partieid", (WebServerContext context) -> { GrilleController.getGrille(context); });
         
+
+        webServer.getRouter().post("/partie/indice/:mot/:nbcarte", (WebServerContext context) -> { 
+            WebServerResponse response = context.getResponse();
+            String mot = context.getRequest().getParam("mot");
+            String nbcarte = context.getRequest().getParam("nbcarte");
+            webServer.getSSE().emit("indice", "{ \"mot\": \"" + mot + "\", \"nbcarte\": \"" + nbcarte + "\" }");
+            response.ok("Indice envoyé");
+         });
         // webServer.getRouter().get("/partie/:code", (WebServerContext context) -> { ParticiperController.getRoleById(context);}); //fonctionne
         // webServer.getRouter().get("/partie/:code:/:joueurid/", (WebServerContext context) -> { ParticiperController.getRoleById(context);}); //fonctionne
         // webServer.getRouter().get("/partie/:code/:joueurid/:role", (WebServerContext context) -> { GrilleController.findAll(context);}); //fonctionne
