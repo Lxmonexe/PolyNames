@@ -30,7 +30,7 @@ async function joinGameWithCode(){
     const pseudo = document.querySelector("#pseudo-entergame").value
     const code = document.querySelector("#code-game").value
     const data = await PseudoService.postPseudo(pseudo, code, "MDI")
-    localStorage.clear()
+    
     localStorage.setItem("code", code)
     localStorage.setItem("pseudo", pseudo)
     localStorage.setItem("role", "MDI")
@@ -45,7 +45,7 @@ async function joinGame(){
         const data = await GameService.postGameCode(randomHex)
         const datapseudo = await PseudoService.postPseudo(pseudo, randomHex, "MDM")
         console.log(datapseudo)
-        localStorage.clear()
+        
         localStorage.setItem("code", randomHex)
         localStorage.setItem("pseudo", pseudo)
         localStorage.setItem("role", "MDM")
@@ -57,7 +57,12 @@ async function joinGame(){
     }
 }
 
+function clearLocalStorage(){
+    localStorage.clear()
+}
+
 function run(){
+    clearLocalStorage()
     createGameButton()
     joinGameButton()
 }
