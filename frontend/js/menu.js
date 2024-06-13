@@ -29,6 +29,9 @@ async function joinGameWithCode(){
     const pseudo = document.querySelector("#pseudo-entergame").value
     const code = document.querySelector("#code-game").value
     const data = await PseudoService.postPseudo(pseudo, code, "MDI")
+    localStorage.setItem("code", code)
+    localStorage.setItem("pseudoJoueur2", pseudo)
+    localStorage.setItem("roleJoueur2", "MDI")
     window.location.href="choix.html"
 }
 
@@ -39,6 +42,9 @@ async function joinGame(){
         const data = await GameService.postGameCode(randomHex)
         const datapseudo = await PseudoService.postPseudo(pseudo, randomHex, "MDM")
         console.log(datapseudo)
+        localStorage.setItem("code", randomHex)
+        localStorage.setItem("pseudoJoueur1", pseudo)
+        localStorage.setItem("roleJoueur1", "MDM")
         window.location.href = "choix.html"
     } catch (error) {
         console.error('Error posting game code:', error)
