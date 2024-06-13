@@ -1,13 +1,13 @@
 import {cardsView}  from "./view/cardsView.js"
-import { MOWview } from "./view/MOWview.js"
+import { MDMview } from "./view/MDMview.js"
 import { CardGridService } from "./services/services-grid.js";
 
 
 async function run(){
     
     
-    const viewMOW = new MOWview()
-    viewMOW.displayCardsMOW(sessionStorage.getItem("code"))
+    const viewMOW = new MDMview()
+    viewMOW.displayCardsMDM(sessionStorage.getItem("code"))
     //hintButton()
 }
 
