@@ -1,4 +1,5 @@
 import { GameService } from "./services/services-game.js"
+import { CardGridService } from "./services/services-grid.js"
 import {PseudoService} from "./services/services-pseudo.js"
 
 function createGameButton(){
@@ -29,9 +30,10 @@ async function joinGameWithCode(){
     const pseudo = document.querySelector("#pseudo-entergame").value
     const code = document.querySelector("#code-game").value
     const data = await PseudoService.postPseudo(pseudo, code, "MDI")
-    localStorage.setItem("code", code)
-    localStorage.setItem("pseudoJoueur2", pseudo)
-    localStorage.setItem("roleJoueur2", "MDI")
+    sessionStorage.setItem("code", code)
+    sessionStorage.setItem("pseudo", pseudo)
+    sessionStorage.setItem("role", "MDI")
+    sessionStorage.setItem("numeroJoueur", 2)
     window.location.href="choix.html"
 }
 
@@ -42,9 +44,11 @@ async function joinGame(){
         const data = await GameService.postGameCode(randomHex)
         const datapseudo = await PseudoService.postPseudo(pseudo, randomHex, "MDM")
         console.log(datapseudo)
-        localStorage.setItem("code", randomHex)
-        localStorage.setItem("pseudoJoueur1", pseudo)
-        localStorage.setItem("roleJoueur1", "MDM")
+        sessionStorage.setItem("code", randomHex)
+        sessionStorage.setItem("pseudoJoueur1", pseudo)
+        sessionStorage.setItem("roleJoueur1", "MDM")
+        sessionStorage.setItem("numeroJoueur", 1)
+        const data2 = await CardGridService.createGrid(randomHex)
         window.location.href = "choix.html"
     } catch (error) {
         console.error('Error posting game code:', error)
