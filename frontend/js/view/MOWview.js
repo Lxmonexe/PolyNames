@@ -25,7 +25,7 @@ export class MOWview{
         grid.innerHTML += cardHTML;
         console.log(cardHTML);
 }   
-    displayCardsMOW(codePartie = "93c3"){
+    displayCardsMOW(codePartie){
         CardGridService.getGrid(codePartie).then(data => {
             //console.log(data);
             data.forEach(card => {

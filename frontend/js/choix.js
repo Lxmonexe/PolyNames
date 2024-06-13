@@ -2,7 +2,9 @@ import { CardGridService } from "./services/services-grid.js";
 
 function buttonListener(){
     let button = document.querySelector("#start-game");
-    button.addEventListener("click", startGame);
+    button.addEventListener("click", ()=> {
+        window.location.href = "partie.html";
+    });
 }
 
 function startGame(){
@@ -17,25 +19,15 @@ function startGame(){
         return;
     }
     // envoi des roles au backend
-    //window.location.href = "game.html";
+    window.location.href = "partie.html";
 }
 
-function addTest(){
-    const button = document.querySelector("#test");
-    button.addEventListener("click", test);
-}
 
-async function test(){
-    console.log("test");
-    const data = await CardGridService.createGrid("93c3");
-    console.log(data);
-    
-}
+
 
 function run(){
-    selectListener();
     buttonListener();
-    //addTest();
+    
 }
 
 window.addEventListener('load', run);

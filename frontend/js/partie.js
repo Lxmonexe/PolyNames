@@ -7,7 +7,7 @@ async function run(){
     
     
     const viewMOW = new MOWview()
-    viewMOW.displayCardsMOW()
+    viewMOW.displayCardsMOW(sessionStorage.getItem("code"))
     //hintButton()
 }
 
