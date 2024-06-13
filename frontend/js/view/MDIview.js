@@ -6,15 +6,24 @@ export class MDIview{
         const grid = document.querySelector('gridCards');
         const cardHTML = `<card id=${card._couleur}><p>${card._texte}</p></card>`;	
         grid.innerHTML += cardHTML;
-        console.log(cardHTML);
     }
-
+    addClicListener(){
+        const cards = document.querySelectorAll('card');
+        for(const card of cards){
+            card.addEventListener('click', async (event) => {
+                const target = event.target;
+                target.style.backgroundColor = "red";
+            });
+        }
+    }
     displayCardsMDI(codePartie){
         CardGridService.getGrid(codePartie).then(data => {
-            //console.log(data);
             data.forEach(card => {
                 this.#displayCard(card);
+                this.addClicListener();
+                });
             });
-        });
-    }
+            
+        };
+        
 }

@@ -12,12 +12,6 @@ export class MDMview{
         
     }
 
-    hintPush(){
-        const hint = document.querySelector('.text-hint').value
-        const number = document.querySelector('.number-hint').value
-        const hintList = document.querySelector('.hint-box')
-        hintList.innerHTML += `<p>${hint} - ${number}</p>`
-    }
 
     #displayCard(card){
         const grid = document.querySelector('gridCards');

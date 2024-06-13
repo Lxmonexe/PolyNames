@@ -25,9 +25,9 @@ function MDIcontroller(){
 
 
 function hintButton(){
-    const view = new MOWview()
+    const view = new MDMview()
     view.hintSubmit()
-    const hintButton = document.querySelector('hint-box-button')
+    const hintButton = document.querySelector('#hint-box-button')
     hintButton.addEventListener('click', hintPush)
 }
 
