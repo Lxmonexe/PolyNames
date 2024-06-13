@@ -10,7 +10,7 @@ h1 {
 body {
     
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: linear-gradient(to top, #003366, #4691ff);
+    background: radial-gradient(#4691ff,#003366);
     height: 100vh; /* Assure que le fond couvre toute la hauteur de la page */
     margin: 0; /* Supprime les marges par défaut du body */
     color: white;
