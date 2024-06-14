@@ -1,5 +1,8 @@
 package models;
+
+// record non utilisé du à la version du JDK
 public class Carte {
+    
     private String _texte;
     private String _couleur;
     private Boolean _decouvert;
@@ -21,5 +24,4 @@ public class Carte {
     public Boolean get_decouvert() {
         return _decouvert;
     }
-
 }
