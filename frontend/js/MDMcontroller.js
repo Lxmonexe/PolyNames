@@ -31,12 +31,26 @@ function hintSubmit() {
     hintButton.addEventListener('click', hintPush)
 }
 
+async function InCardList(hint){
+    const data = await CardGridService.getGrid(localStorage.getItem("code"))
+    for(const card of data){
+        if(card._texte == hint){
+            return true
+        }
+    }
+    return false
+}
+
 
 async function hintPush(){
     const hint = document.querySelector('.text-hint').value
     const number = document.querySelector('.number-hint').value.toString()
     if(hint.includes(" ")){
         alert("Un seul mot est autorisé")
+        return
+    }
+    if(await InCardList(hint.toString())){
+        alert("Vous ne pouvez pas donner le mot d'une carte")
         return
     }
     if(premierIndiceMDM){
