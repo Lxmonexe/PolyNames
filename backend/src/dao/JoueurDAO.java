@@ -11,10 +11,18 @@ import models.Joueur;
 
 public class JoueurDAO {
     
+    /**
+     * Constructeur
+     */
     public JoueurDAO() {
 
     }
 
+    /**
+     * Creer un joueur
+     * @param pseudo
+     * @throws SQLException
+     */
     public void create(String pseudo) throws SQLException {
         PolyNamesDatabase pbd = new PolyNamesDatabase();
         String query = "INSERT INTO `joueur` (`pseudo`) VALUES (?);";
@@ -24,6 +32,12 @@ public class JoueurDAO {
         }
     }
 
+    /**
+     * Obtenir l'id d'un joueur par son pseudo
+     * @param pseudo
+     * @return
+     * @throws SQLException
+     */
     public int getIdJoueurByPseudo(String pseudo) throws SQLException {
         PolyNamesDatabase pbd = new PolyNamesDatabase();
         int idJoueur = 0;
@@ -40,6 +54,12 @@ public class JoueurDAO {
         return idJoueur;
     }
 
+    /**
+     * Obtenir un joueur par id
+     * @param id
+     * @return
+     * @throws SQLException
+     */
     public Joueur findById(int id) throws SQLException {
         PolyNamesDatabase pbd = new PolyNamesDatabase();
         String query = "SELECT * FROM `joueur` WHERE `id` = ?;";
