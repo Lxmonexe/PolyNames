@@ -48,7 +48,7 @@ async function viewRole(){
 }
 
 function buttonStart(){
-    const button = document.querySelector(".start-game");
+    const button = document.querySelector(".start-button");
     button.addEventListener("click", () => {
         window.location.href = "partie.html";
     });

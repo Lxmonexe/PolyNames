@@ -4,6 +4,8 @@ import { SSEClient } from "./libs/sse-client.js"
 
 const sseClient = new SSEClient(`localhost:8080`)
 let premierIndiceMDI = true
+let peutDecouvrir = false
+
 
 function displayCard(card){
     const grid = document.querySelector('gridCards');
@@ -51,13 +53,13 @@ function cardEventListener(){
         console.log("test")
         card.addEventListener('click', (target) => {
         
-        if(target.target.id === "gris"){
+        if((target.target.id === "gris") && peutDecouvrir){
             card.style.backgroundColor = "grey"
             card.id = "decouvert"
             nextTurn()
-            localStorage.setItem("intuition", 0)
+            peutDecouvrir = false
         }
-        else if(target.target.id === "bleu"){
+        else if((target.target.id === "bleu") && peutDecouvrir){
             if(cardClicked <= localStorage.getItem("nbcarte")){
                 card.style.backgroundColor = "blue"
                 card.id = "decouvert"
@@ -67,6 +69,7 @@ function cardEventListener(){
                 if(blueCard === 0){
                     postEndGame("Victoire !")
                 }
+                
             }
             else if(cardClicked > localStorage.getItem("nbcarte")){
                 card.style.backgroundColor = "blue"
@@ -77,10 +80,11 @@ function cardEventListener(){
                 if(blueCard === 0){
                     postEndGame("Victoire !")
                 }
+                
             }
             
         }
-        else if(target.target.id === "noir" ){
+        else if((target.target.id === "noir") && peutDecouvrir){
             card.style.backgroundColor = "black"
             console.log("testnoir")
             updateScore(0)
@@ -105,7 +109,7 @@ async function showHint(){
         const hintList = document.querySelector('.hint-box')
         localStorage.setItem("nbcarte", indice.nbcarte)    
         hintList.innerHTML += `<p>${indice.mot} - ${indice.nbcarte}</p>`
-        
+        peutDecouvrir = true
         }})
         
 }
