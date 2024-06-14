@@ -20,6 +20,8 @@ async function changeMDI(){
     localStorage.setItem("role", "MDI");
 }
 
+
+// fonction permettant de d'afficher le pseudo des joueurs au dessus de leur role
 async function viewRole(){
     sseClient.subscribe("role", (data) => {
         data = JSON.parse(data);
