@@ -18,10 +18,8 @@ async function run(){
 }
  
 function finishGame(){
-    const h1 = document.querySelector('h1')
     const h3 = document.querySelector('h3')
-    h1.innerHTML = localStorage.getItem("statutFin")
-    h3.innerHTML = `Score: ${localStorage.getItem("scoreFinal")}`
+    h3.innerHTML = `Partie ${localStorage.getItem("statutFin")} le score est de: ${localStorage.getItem("score")}`
 }
 
 function createGame(){

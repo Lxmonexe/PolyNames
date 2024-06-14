@@ -39,7 +39,8 @@ async function nextTurn(){
     const data = await GameService.nextTurn()
 }
 async function updateScore(score){
-    const data = await GameService.updateScore(localStorage.getItem("code"), score.toString())
+    localStorage.setItem("score", parseInt(localStorage.getItem("score")) + score)
+    const data = await GameService.updateScore(localStorage.getItem("code"), localStorage.getItem("score"))
 }
 
 function cardEventListener(){
@@ -63,6 +64,9 @@ function cardEventListener(){
                 updateScore(cardClicked)
                 cardClicked += 1 
                 blueCard -= 1
+                if(blueCard === 0){
+                    postEndGame(1)
+                }
             }
             else if(cardClicked > localStorage.getItem("nbcarte")){
                 card.style.backgroundColor = "blue"
@@ -70,6 +74,9 @@ function cardEventListener(){
                 card.id = "decouvert"
                 cardClicked +=1 
                 blueCard -= 1
+                if(blueCard === 0){
+                    postEndGame(1)
+                }
             }
             
         }
@@ -78,11 +85,9 @@ function cardEventListener(){
             console.log("testnoir")
             updateScore(0)
             card.id = "decouvert"
-            postEndGame()
+            postEndGame(0)
         }
-        else if(blueCard === 0){
-            postEndGame()
-        }
+        
         })
     }
 }
@@ -113,14 +118,13 @@ async function getScore(){
     })
 }
 
-async function postEndGame(){
-    const data = await GameService.endGame(localStorage.getItem("code"))
+async function postEndGame(statut){
+    const data = await GameService.endGame(localStorage.getItem("code"), statut)
 }
 
 async function endGame(){
     sseClient.subscribe("finPartie", (data) => {
         data = JSON.parse(data)
-        localStorage.setItem("scoreFinal", data.scorePartie)
         localStorage.setItem("statutFin", data.statutFin)
         localStorage.setItem("role","vide")
         window.location.href = "partie.html"
@@ -128,7 +132,7 @@ async function endGame(){
 }
 
 function run(){
-    
+    localStorage.setItem("score", 0)
     displayCardsMDI(localStorage.getItem("code"))
     connectSSE()
     showHint()

@@ -2,9 +2,7 @@ import { CardGridService } from "./services/services-grid.js";
 
 function buttonListener(){
     let button = document.querySelector("#start-game");
-    button.addEventListener("click", ()=> {
-        window.location.href = "partie.html";
-    });
+    button.addEventListener("click", () =>{window.location.href = "partie.html";});
 }
 
 function startGame(){

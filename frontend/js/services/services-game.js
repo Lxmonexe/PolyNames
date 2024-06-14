@@ -57,13 +57,13 @@ export class GameService{
         }
     }
 
-    static async endGame(id){
+    static async endGame(id, statut){
         let data = null;
-        const response = await fetch(`http://localhost:8080/partie/fin-partie/${id}`, {
+        const response = await fetch(`http://localhost:8080/partie/fin-partie/${id}/${statut}`, {
             method: "POST",
         });
         if (response.status === 200) {
-            data = await response;    
+            data = response;    
             return data;
         }
     }
