@@ -5,9 +5,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-
 import database.PolyNamesDatabase;
 import models.Mot;
+
 
 public class MotDAO {
 
