@@ -29,4 +29,14 @@ public class GrilleController {
             context.getResponse().send(500, "Internal Server Error: " + e.getMessage());
         }
     }
+
+    public static void decouvert(WebServerContext context){
+        GrilleDAO grilleDAO = new GrilleDAO();
+        try {
+            grilleDAO.decouvert(context.getRequest().getParam("partieid"), context.getRequest().getParam("mot"));
+            context.getResponse().ok("Carte découverte");
+        } catch (SQLException e) {
+            context.getResponse().send(500, "Internal Server Error: " + e.getMessage());
+        }
+    }
 }

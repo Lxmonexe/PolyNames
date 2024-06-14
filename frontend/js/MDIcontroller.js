@@ -45,6 +45,13 @@ async function updateScore(score){
     const data = await GameService.updateScore(localStorage.getItem("code"), localStorage.getItem("score"))
 }
 
+
+
+async function carteDecouverte(mot){
+    const data = await CardGridService.carteDecouverte(localStorage.getItem("code"), mot)
+}
+
+
 function cardEventListener(){
     let cardClicked = 1
     let blueCard = 8

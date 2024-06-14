@@ -27,6 +27,19 @@ export class CardGridService {
             return data
         }
     }
+
+    static async carteDecouverte(codePartie, mot){
+        const response = await fetch(`http://localhost:8080/partie/grille/${codePartie}/${mot}`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        }
+        );
+        if(response.status === 200){
+            return response
+        }
+    }
     
 }
 

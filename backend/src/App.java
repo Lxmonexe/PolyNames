@@ -61,6 +61,14 @@ public class App {
             String numeroJoueur = context.getRequest().getParam("numeroJoueur"); 
             webServer.getSSE().emit("role", "{ \"role\": \"" + role + "\", \"pseudo\": \"" + pseudo + "\", \"numeroJoueur\": \"" + numeroJoueur + "\" }");
          });
+
+         webServer.getRouter().post("/partie/grille/:partieid/:mot", (WebServerContext context)->{
+            GrilleController.decouvert(context);
+            String mot = context.getRequest().getParam("mot");
+            webServer.getSSE().emit("decouvert", "{ \"mot\": \"" + mot + "\" }");
+         });
+
+
         // webServer.getRouter().get("/partie/:code", (WebServerContext context) -> { ParticiperController.getRoleById(context);}); //fonctionne
         // webServer.getRouter().get("/partie/:code:/:joueurid/", (WebServerContext context) -> { ParticiperController.getRoleById(context);}); //fonctionne
         // webServer.getRouter().get("/partie/:code/:joueurid/:role", (WebServerContext context) -> { GrilleController.findAll(context);}); //fonctionne

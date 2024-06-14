@@ -111,6 +111,17 @@ public class GrilleDAO {
     //     return grilles;
     // }
 
+    public void decouvert(String idPartie, String mot) throws SQLException {
+        PolyNamesDatabase pbd = new PolyNamesDatabase();
+        String query = "UPDATE `grille` JOIN `mot` ON `mot`.`id` = `grille`.`idMot` SET `grille`.`decouvert` = 1 WHERE `idPartie` = ? AND `mot`.`texte` = ?;";
+        
+        try (PreparedStatement stmt = pbd.prepareStatement(query)) {
+            stmt.setString(1, idPartie);
+            stmt.setString(2, mot);
+            stmt.execute();
+        }
+    }
+
     public void delete(int id) throws SQLException {
         PolyNamesDatabase pbd = new PolyNamesDatabase();
         String query = "DELETE FROM `grille` WHERE `id` = ?;";
