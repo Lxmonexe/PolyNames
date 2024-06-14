@@ -16,7 +16,7 @@ public class Mot {
     }
 
     /**
-     * 
+     * Retourne l'id
      * @return id
      */
     public int get_id() {
@@ -24,7 +24,7 @@ public class Mot {
     }
 
     /**
-     * 
+     * Retourne le mot
      * @return texte
      */
     public String get_texte() {
