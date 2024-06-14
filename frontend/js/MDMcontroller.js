@@ -71,18 +71,11 @@ async function getScore(){
 
 async function endGame(){
     sseClient.subscribe("finPartie", (data) => {
-        const h1 = document.querySelector('h1')
-        const h3 = document.querySelector('h3')
-        const container = document.querySelector('.container')
         data = JSON.parse(data)
-        h1.innerHTML = `Fin de la partie : ${data.statutFin}`
-        h3.innerHTML = `Score: ${data.scorePartie}`
-        container.innerHTML = "<button id='end-game'>Rejouer</button>"
-        const button = document.querySelector('#end-game')
-        button.addEventListener('click', () => {
-            localStorage.setItem("role","")
-            window.location.href = "partie.html"
-        })
+        localStorage.setItem("scoreFinal", data.scorePartie)
+        localStorage.setItem("statutFin", data.statutFin)
+        localStorage.setItem("role","vide")
+        window.location.href = "partie.html"
     })
 }
 
