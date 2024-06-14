@@ -1,6 +1,8 @@
 package models;
 
+// record non utilisé du à la version du JDK
 public class Participer {
+    
     private int _id;
     private int _idJoueur;
     private String _idPartie;

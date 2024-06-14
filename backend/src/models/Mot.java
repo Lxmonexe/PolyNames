@@ -1,5 +1,6 @@
 package models;
 
+// record non utilisé du à la version du JDK
 public class Mot {
 
     private int _id;

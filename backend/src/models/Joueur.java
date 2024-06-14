@@ -1,5 +1,6 @@
 package models;
 
+// record non utilisé du à la version du JDK
 public class Joueur {
     private int _id;
     private String _pseudo;

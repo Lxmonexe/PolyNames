@@ -3,11 +3,9 @@ package dao;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
-
 import database.PolyNamesDatabase;
 import models.Partie;
+
 
 public class PartieDAO {
 
@@ -54,20 +52,6 @@ public class PartieDAO {
         return exists;
     }
 
-    // public List<Partie> findAll() throws SQLException {
-    //     PolyNamesDatabase pbd = new PolyNamesDatabase();
-    //     List<Partie> parties = new ArrayList<>();
-    //     String query = "SELECT * FROM `partie`;";
-    //     try (PreparedStatement stmt = pbd.prepareStatement(query);
-    //          ResultSet rs = stmt.executeQuery()) {
-    //         while (rs.next()) {
-    //             parties.add(new Partie(rs.getString("id")));
-    //         }
-    //     }
-    //     return parties;
-    // }
-
-
     public void delete(int id) throws SQLException {
         PolyNamesDatabase pbd = new PolyNamesDatabase();
         String query = "DELETE FROM `partie` WHERE `id` = ?;";
@@ -76,6 +60,4 @@ public class PartieDAO {
             stmt.execute();
         }
     }
-
-
 }

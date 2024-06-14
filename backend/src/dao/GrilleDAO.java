@@ -7,12 +7,10 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Random;
-
 import database.PolyNamesDatabase;
-import models.Grille;
 import models.Mot;
-import models.Partie;
 import models.Carte;
+
 
 public class GrilleDAO {
 
@@ -20,17 +18,14 @@ public class GrilleDAO {
         
     }
 
-    //coucou
     public void create(String idPartie) throws SQLException {
         PolyNamesDatabase pbd = new PolyNamesDatabase();
         List<Mot> mots = new ArrayList<>();
         ArrayList<String> couleurs = new ArrayList<>();
-
         String query = "INSERT INTO `grille` (`idPartie`, `idMot`, `couleur`, `decouvert`) VALUES (?, ?, ?, ?);";
-
         MotDAO motDAO = new MotDAO();
+        
         mots = motDAO.findAll();
-
         Collections.shuffle(mots, new Random());
         mots.subList(0, 25);
 
@@ -48,30 +43,8 @@ public class GrilleDAO {
                 stmt.setBoolean(4, false);
                 stmt.execute();
             }
-            
         }
     }
-
-    // public Grille findById(int id) throws SQLException {
-    //     PolyNamesDatabase pbd = new PolyNamesDatabase();
-    //     String query = "SELECT * FROM `grille` WHERE `id` = ?;";
-        
-    //     try (PreparedStatement stmt = pbd.prepareStatement(query)) {    
-    //         stmt.setInt(1, id);
-    //         try (ResultSet rs = stmt.executeQuery()) {
-    //             if (rs.next()) {
-    //                 PartieDAO partieDAO = new PartieDAO();
-    //                 MotDAO motDAO = new MotDAO();
-
-    //                 Partie partie = partieDAO.findById(rs.getInt("idPartie"));
-    //                 Mot mot = motDAO.findById(rs.getInt("idMot"));
-
-    //                 return new Grille(rs.getInt("id"), partie, mot, rs.getString("couleur"));
-    //             }
-    //         }
-    //     }
-    //     return null;
-    // }
 
     public ArrayList<Carte> findAll(String idPartie) throws SQLException {
         PolyNamesDatabase pbd = new PolyNamesDatabase();
@@ -90,31 +63,9 @@ public class GrilleDAO {
         return cartes;
     }
 
-    // public List<Grille> findAll(String idPartie) throws SQLException {
-    //     PolyNamesDatabase pbd = new PolyNamesDatabase();
-    //     List<Grille> grilles = new ArrayList<>();
-    //     String query = "SELECT `mot`.`texte` FROM `grille` INNER JOIN `partie` ON WHERE `idPartie` = ?;";
-    //     String query = "SELECT `mot`.`texte` FROM `grille` INNER JOIN `mot` ON `mot`.`id` = `grille`.`idMot` WHERE `idPartie` = ?;"
-
-    //     try (PreparedStatement stmt = pbd.prepareStatement(query)) {
-    //         stmt.setString(1, idPartie);
-    //         try (ResultSet rs = stmt.executeQuery()) {
-    //             MotDAO motDAO = new MotDAO();
-                
-    //             while (rs.next()) {
-    //                 Mot mot = motDAO.findById(rs.getInt("idMot"));
-
-    //                 grilles.add(new Grille(rs.getInt("id"),idPartie, mot.get_id(), rs.getString("couleur"), rs.getBoolean("decouvert")));
-    //             }
-    //         }
-    //     }
-    //     return grilles;
-    // }
-
     public void decouvert(String idPartie, String mot) throws SQLException {
         PolyNamesDatabase pbd = new PolyNamesDatabase();
         String query = "UPDATE `grille` JOIN `mot` ON `mot`.`id` = `grille`.`idMot` SET `grille`.`decouvert` = 1 WHERE `idPartie` = ? AND `mot`.`texte` = ?;";
-        
         try (PreparedStatement stmt = pbd.prepareStatement(query)) {
             stmt.setString(1, idPartie);
             stmt.setString(2, mot);
@@ -125,7 +76,6 @@ public class GrilleDAO {
     public void delete(int id) throws SQLException {
         PolyNamesDatabase pbd = new PolyNamesDatabase();
         String query = "DELETE FROM `grille` WHERE `id` = ?;";
-        
         try (PreparedStatement stmt = pbd.prepareStatement(query)) {
             stmt.setInt(1, id);
             stmt.execute();
