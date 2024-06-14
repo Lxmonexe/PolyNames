@@ -1,4 +1,3 @@
-import { CardGridService } from "./services/services-grid.js";
 import { GameService } from "./services/services-game.js";
 import { SSEClient } from "./libs/sse-client.js"
 
