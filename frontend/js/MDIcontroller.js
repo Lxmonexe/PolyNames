@@ -65,7 +65,7 @@ function cardEventListener(){
                 cardClicked += 1 
                 blueCard -= 1
                 if(blueCard === 0){
-                    postEndGame("victoire !")
+                    postEndGame("Victoire !")
                 }
             }
             else if(cardClicked > localStorage.getItem("nbcarte")){
@@ -75,7 +75,7 @@ function cardEventListener(){
                 cardClicked +=1 
                 blueCard -= 1
                 if(blueCard === 0){
-                    postEndGame("victoire !")
+                    postEndGame("Victoire !")
                 }
             }
             
@@ -85,7 +85,7 @@ function cardEventListener(){
             console.log("testnoir")
             updateScore(0)
             card.id = "decouvert"
-            postEndGame("perdue...")
+            postEndGame("Perdue...")
         }
         
         })
@@ -126,6 +126,7 @@ async function endGame(){
     sseClient.subscribe("finPartie", (data) => {
         data = JSON.parse(data)
         localStorage.setItem("statutFin", data.statutFin)
+        localStorage.setItem("score", data.scorePartie)
         localStorage.setItem("role","vide")
         window.location.href = "partie.html"
     })

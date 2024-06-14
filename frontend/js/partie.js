@@ -19,7 +19,7 @@ async function run(){
  
 function finishGame(){
     const h3 = document.querySelector('h3')
-    h3.innerHTML = `Partie ${localStorage.getItem("statutFin")} le score est de: ${localStorage.getItem("score")}`
+    h3.innerHTML = `${localStorage.getItem("statutFin")} Le score est de: ${localStorage.getItem("score")}`
 }
 
 function createGame(){
@@ -31,8 +31,6 @@ async function startNewGame(){
     let randomHex = Math.floor(Math.random()*654321).toString(16)
     try {
         const data = await GameService.postGameCode(randomHex)
-        
-        console.log(datapseudo)
         const newGame = await GameService.newGame(randomHex, localStorage.getItem("pseudo"), "MDM")
         localStorage.setItem("code", randomHex)
         localStorage.setItem("role", "MDM")

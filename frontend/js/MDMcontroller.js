@@ -65,7 +65,7 @@ async function getScore(){
         const h3 = document.querySelector('h3')
         data = JSON.parse(data)
         h3.innerHTML = `Score: ${data.scorePartie}`
-        localStorage.setItem("score", data.scorePartie)
+        
     })
 }
 
@@ -73,6 +73,7 @@ async function endGame(){
     sseClient.subscribe("finPartie", (data) => {
         data = JSON.parse(data)
         localStorage.setItem("statutFin", data.statutFin)
+        localStorage.setItem("score", data.scorePartie)
         localStorage.setItem("role","vide")
         window.location.href = "partie.html"
     })

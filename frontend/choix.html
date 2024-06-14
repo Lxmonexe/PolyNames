@@ -7,16 +7,28 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <div class="container-player">
-        <h1>Choix des rôles</h1>
-        <p>Le code de la partie est : <p id="code-partie"></p> </p>
-        <listeRole><Role>
-            <joueur class ="MDM"><h4>Maitre des Mots</h4></joueur>
-            <joueur class="MDI">Maitre des Intuitions</joueur>
-        </Role></listeRole>
-        <button id="start-game">Commencer la partie</button>
-    </div>
     
+    <h1>Choix des rôles</h1>
+    <div class="container-player"><p>Le code de la partie est : <p id="code-partie"></p> </p></div>
+    <div class="role-selection">
+        <div class="role-boxes">
+            <div class="role-box" id="MDM">
+                
+            </div>
+            <div class="role-box" id="MDI">
+                
+            </div>
+            <div class="role-box" id="Auto">
+                
+            </div>
+        </div>
+        <div class="role-boxes">
+            <button class="role-button" id="buttonMDM">Maître des Mots</button>
+            <button class="role-button" id="buttonMDI">Maître des intuitions</button>
+            <button class="role-button" id="buttonAuto">Automatique</button>
+        </div>
+        <button class="start-button">Commencer la partie</button>
+    </div>
     <script src="js/choix.js" type="module"></script>
 </body>
 </html>
