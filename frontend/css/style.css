@@ -17,8 +17,8 @@ body {
     
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background: radial-gradient(#4691ff,#003366);
-    height: 100vh; /* Assure que le fond couvre toute la hauteur de la page */
-    margin: 0; /* Supprime les marges par défaut du body */
+    height: 100vh; 
+    margin: 0; 
     color: white;
     overflow: hidden;
 }
@@ -30,51 +30,51 @@ body {
 }
 
 button {
-    background-color: #ff5733; /* Couleur de fond du bouton */
-    color: white; /* Couleur du texte */
-    border: none; /* Supprime la bordure par défaut */
-    padding: 15px 30px; /* Padding interne du bouton */
-    font-size: 16px; /* Taille du texte */
-    font-weight: bold; /* Texte en gras */
-    border-radius: 8px; /* Bords arrondis */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Ombre pour un léger effet 3D */
-    cursor: pointer; /* Change le curseur au survol */
-    transition: background-color 0.3s, transform 0.3s; /* Transition pour les effets de survol */
+    background-color: #ff5733; 
+    color: white; 
+    border: none; 
+    padding: 15px 30px; 
+    font-size: 16px; 
+    font-weight: bold; 
+    border-radius: 8px; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+    cursor: pointer; 
+    transition: background-color 0.3s, transform 0.3s; 
 }
 
 button:hover {
-    background-color: #ff704d; /* Couleur de fond au survol */
-    transform: scale(1.05); /* Agrandit légèrement le bouton au survol */
+    background-color: #ff704d; 
+    transform: scale(1.05); 
 }
 
 button:active {
-    background-color: #e64c1d; /* Couleur de fond lors du clic */
-    transform: scale(0.95); /* Réduit légèrement le bouton lors du clic */
+    background-color: #e64c1d; 
+    transform: scale(0.95); 
 }
 
 button:disabled {
-    background-color: #999; /* Couleur de fond du bouton désactivé */
-    cursor: not-allowed; /* Curseur en forme de rond barré */
+    background-color: #999; 
+    cursor: not-allowed; 
 }
 
 input {
-    width: 300px; /* Largeur du champ input */
-    padding: 15px; /* Padding interne du champ input */
-    font-size: 16px; /* Taille du texte */
-    border: 2px solid #ccc; /* Bordure du champ input */
-    border-radius: 8px; /* Bords arrondis */
-    outline: none; /* Supprime le contour par défaut au focus */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Ombre pour un léger effet 3D */
-    transition: border-color 0.3s; /* Transition pour le changement de couleur de la bordure */
-    margin-bottom: 20px; /* Marge en bas du champ input */
+    width: 300px; 
+    padding: 15px; 
+    font-size: 16px; 
+    border: 2px solid #ccc; 
+    border-radius: 8px; 
+    outline: none; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+    transition: border-color 0.3s; 
+    margin-bottom: 20px; 
 }
 
 input:focus {
-    border-color: #4691ff; /* Change la couleur de la bordure au focus */
+    border-color: #4691ff; 
 }
 
 ::placeholder {
-    color: #999; /* Couleur du texte placeholder */
+    color: #999; 
 }
 .player {
     margin-bottom: 20px;
