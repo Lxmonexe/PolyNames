@@ -24,7 +24,7 @@ function hintSubmit() {
     const hint = document.querySelector('.input-box');
     hint.innerHTML = 
         `<h2>Ajouter un indice</h2>
-        <input type="text" placeholder="Entrez votre indice ici" class="text-hint">
+        <input type="text" placeholder="Entrez votre indice ici (un seul mot)" class="text-hint">
         <input type="number" placeholder="Nombre de cartes associées" class="number-hint">
         <button id="hint-box-button">Ajouter l'indice</button>`  
     const hintButton = document.querySelector('#hint-box-button')
@@ -35,6 +35,10 @@ function hintSubmit() {
 async function hintPush(){
     const hint = document.querySelector('.text-hint').value
     const number = document.querySelector('.number-hint').value.toString()
+    if(hint.includes(" ")){
+        alert("Un seul mot est autorisé")
+        return
+    }
     if(premierIndiceMDM){
         const hintList = document.querySelector('.hint-box')
         hintList.innerHTML = "<h2>Indices</h2>"
