@@ -5,6 +5,7 @@ import { SSEClient } from "./libs/sse-client.js"
 const sseClient = new SSEClient(`localhost:8080`)
 let premierIndiceMDI = true
 let peutDecouvrir = false
+let cardClicked = 1
 
 function displayCard(card){
     const grid = document.querySelector('gridCards');
@@ -47,7 +48,6 @@ async function carteDecouverte(mot){
 
 
 function cardEventListener(){
-    let cardClicked = 1
     let blueCard = 8
     const cards = document.querySelectorAll('card')
     for(const card of cards){
@@ -111,6 +111,7 @@ async function showHint(){
         localStorage.setItem("nbcarte", indice.nbcarte)    
         hintList.innerHTML += `<p>${indice.mot} - ${indice.nbcarte}</p>`
         peutDecouvrir = true
+        cardClicked = 1
         }
     })
 }

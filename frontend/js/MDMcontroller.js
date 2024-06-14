@@ -75,7 +75,7 @@ async function getScore(){
         const h3 = document.querySelector('h3')
         data = JSON.parse(data)
         h3.innerHTML = `Score: ${data.scorePartie}`
-        
+        localStorage.setItem("score", data.scorePartie)
     })
 }
 
