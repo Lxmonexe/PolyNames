@@ -65,7 +65,7 @@ function cardEventListener(){
                 cardClicked += 1 
                 blueCard -= 1
                 if(blueCard === 0){
-                    postEndGame(1)
+                    postEndGame("victoire !")
                 }
             }
             else if(cardClicked > localStorage.getItem("nbcarte")){
@@ -75,7 +75,7 @@ function cardEventListener(){
                 cardClicked +=1 
                 blueCard -= 1
                 if(blueCard === 0){
-                    postEndGame(1)
+                    postEndGame("victoire !")
                 }
             }
             
@@ -85,7 +85,7 @@ function cardEventListener(){
             console.log("testnoir")
             updateScore(0)
             card.id = "decouvert"
-            postEndGame(0)
+            postEndGame("perdue...")
         }
         
         })

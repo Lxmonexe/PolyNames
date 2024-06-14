@@ -31,9 +31,9 @@ async function startNewGame(){
     let randomHex = Math.floor(Math.random()*654321).toString(16)
     try {
         const data = await GameService.postGameCode(randomHex)
-        const datapseudo = await PseudoService.postPseudo(localStorage.getItem("pseudo"), randomHex, "MDM")
-        console.log(datapseudo)
         
+        console.log(datapseudo)
+        const newGame = await GameService.newGame(randomHex, localStorage.getItem("pseudo"), "MDM")
         localStorage.setItem("code", randomHex)
         localStorage.setItem("role", "MDM")
         localStorage.setItem("numeroJoueur", 1)
@@ -51,8 +51,7 @@ function joinGame(){
 
 async function joinGameWithCode(){
     const code = document.querySelector("#code-game").value
-    const data = await PseudoService.postPseudo(localStorage.getItem("pseudo"), code, "MDI")
-    
+    const newGame = await GameService.newGame(code, localStorage.getItem("pseudo"), "MDI")
     localStorage.setItem("code", code)
     localStorage.setItem("role", "MDI")
     localStorage.setItem("numeroJoueur", 2)

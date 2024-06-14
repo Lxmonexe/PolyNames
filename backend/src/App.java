@@ -24,6 +24,7 @@ public class App {
         webServer.getRouter().post("/partie/creer/joueur/:partieid/:pseudo/:role", (WebServerContext context) -> { JoueurController.createJoueur(context); ParticiperController.createParticipant(context); });
         webServer.getRouter().post("/partie/code/creer/grille/:partieid", (WebServerContext context) -> { GrilleController.create(context); });
         webServer.getRouter().put("/partie/code/grille/:partieid", (WebServerContext context) -> { GrilleController.getGrille(context); });
+        webServer.getRouter().post("/partie/creer/nouvelle-partie/:partieid/:pseudo/:role", (WebServerContext context) -> {ParticiperController.createParticipant(context); });
 
         webServer.getRouter().post("/partie/code/score/:partieid/:score", (WebServerContext context) -> { 
             ParticiperController.updateScore(context); 
@@ -47,16 +48,9 @@ public class App {
 
          webServer.getRouter().post("/partie/fin-partie/:idpartie/:statut", (WebServerContext context) -> { 
             WebServerResponse response = context.getResponse();
-            String statutFin = "";
+            String statutFin = context.getRequest().getParam("statut");
             int score = ParticiperController.getScore(context);
-            if(Integer.parseInt(context.getRequest().getParam("statutFin")) == 0){
-                statutFin = "perdue";
-            }
-            else {
-                statutFin = "gangée";
-            }
             webServer.getSSE().emit("finPartie", "{ \"statutFin\": \"" + statutFin + "\",\"scorePartie\": \"" + score + "\"}");
-            
             response.ok("Fin de la partie");
          });
         

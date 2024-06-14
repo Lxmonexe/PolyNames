@@ -67,4 +67,15 @@ export class GameService{
             return data;
         }
     }
+
+    static async newGame(id, pseudo, role){
+        let data = null;
+        const response = await fetch(`http://localhost:8080/partie/creer/nouvelle-partie/${id}/${pseudo}/${role}`, {
+            method: "POST",
+        });
+        if (response.status === 200) {
+            data = response;    
+            return data;
+        }
+    }
 }
