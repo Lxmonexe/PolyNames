@@ -79,9 +79,9 @@ export class GameService{
         }
     }
 
-    static async udpdateRole(id, role, pseudo){
+    static async udpdateRole(id, role, pseudo, numeroJoueur){
         let data = null;
-        const response = await fetch(`http://localhost:8080/partie/role/${id}/${pseudo}/${role}`, {
+        const response = await fetch(`http://localhost:8080/partie/role/${id}/${pseudo}/${role}/${numeroJoueur}`, {
             method: "POST",
         });
         if (response.status === 200) {

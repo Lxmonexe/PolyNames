@@ -53,7 +53,14 @@ public class App {
             webServer.getSSE().emit("finPartie", "{ \"statutFin\": \"" + statutFin + "\",\"scorePartie\": \"" + score + "\"}");
             response.ok("Fin de la partie");
          });
-        
+
+         webServer.getRouter().post("/partie/role/:partieid/:pseudo/:role/:numeroJoueur", (WebServerContext context) -> { 
+            ParticiperController.updateRole(context);
+            String role = context.getRequest().getParam("role");
+            String pseudo = context.getRequest().getParam("pseudo");
+            String numeroJoueur = context.getRequest().getParam("numeroJoueur"); 
+            webServer.getSSE().emit("role", "{ \"role\": \"" + role + "\", \"pseudo\": \"" + pseudo + "\", \"numeroJoueur\": \"" + numeroJoueur + "\" }");
+         });
         // webServer.getRouter().get("/partie/:code", (WebServerContext context) -> { ParticiperController.getRoleById(context);}); //fonctionne
         // webServer.getRouter().get("/partie/:code:/:joueurid/", (WebServerContext context) -> { ParticiperController.getRoleById(context);}); //fonctionne
         // webServer.getRouter().get("/partie/:code/:joueurid/:role", (WebServerContext context) -> { GrilleController.findAll(context);}); //fonctionne

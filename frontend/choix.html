@@ -12,22 +12,22 @@
     <div class="container-player"><p>Le code de la partie est : <p id="code-partie"></p> </p></div>
     <div class="role-selection">
         <div class="role-boxes">
-            <div class="role-box" id="MDM">
+            <div class="role-box" id="joueurMDM">
                 
             </div>
-            <div class="role-box" id="MDI">
-                
-            </div>
-            <div class="role-box" id="Auto">
+            <div class="role-box" id="joueurMDI">
                 
             </div>
         </div>
         <div class="role-boxes">
-            <button class="role-button" id="buttonMDM">Maître des Mots</button>
-            <button class="role-button" id="buttonMDI">Maître des intuitions</button>
-            <button class="role-button" id="buttonAuto">Automatique</button>
+           
+            <button class="MDM" id="role-button" disabled>Maître des Mots</button>
+            <button class="MDI" id="role-button" disabled>Maître des intuitions</button>
+           
+            
         </div>
         <button class="start-button">Commencer la partie</button>
+        <p>Le joueur qui a crée la partie est par défaut Maître des Mots</p>
     </div>
     <script src="js/choix.js" type="module"></script>
 </body>
