@@ -6,7 +6,6 @@ const sseClient = new SSEClient(`localhost:8080`)
 let premierIndiceMDI = true
 let peutDecouvrir = false
 
-
 function displayCard(card){
     const grid = document.querySelector('gridCards');
     const cardHTML = `<card id=${card._couleur}><p>${card._texte}</p></card>`;	
@@ -18,14 +17,8 @@ function displayCardsMDI(codePartie){
         data.forEach(card => {
             displayCard(card);
             cardEventListener()
-            
             });
         });
-        
-}
-
-function connectSSE(){
-    sseClient.connect()
 }
 
 function nextTurnButton(){
@@ -40,6 +33,7 @@ function nextTurnButton(){
 async function nextTurn(){
     const data = await GameService.nextTurn()
 }
+
 async function updateScore(score){
     localStorage.setItem("score", parseInt(localStorage.getItem("score")) + score)
     const data = await GameService.updateScore(localStorage.getItem("code"), localStorage.getItem("score"))
@@ -117,8 +111,8 @@ async function showHint(){
         localStorage.setItem("nbcarte", indice.nbcarte)    
         hintList.innerHTML += `<p>${indice.mot} - ${indice.nbcarte}</p>`
         peutDecouvrir = true
-        }})
-        
+        }
+    })
 }
 
 async function getScore(){
@@ -146,7 +140,7 @@ async function endGame(){
 function run(){
     localStorage.setItem("score", 0)
     displayCardsMDI(localStorage.getItem("code"))
-    connectSSE()
+    sseClient.connect()
     showHint()
     nextTurnButton()
     getScore()

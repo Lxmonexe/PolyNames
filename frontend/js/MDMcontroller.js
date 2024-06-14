@@ -9,7 +9,6 @@ function displayCard(card){
     const grid = document.querySelector('gridCards');
     const cardHTML = `<card class=${card._couleur} id="MDM"><p>${card._texte}</p></card>`;	
     grid.innerHTML += cardHTML;
-    
 }   
 
 function displayCardsMDM(codePartie){
@@ -41,7 +40,6 @@ async function InCardList(hint){
     return false
 }
 
-
 async function hintPush(){
     const hint = document.querySelector('.text-hint').value
     const number = document.querySelector('.number-hint').value.toString()
@@ -64,12 +62,6 @@ async function hintPush(){
     const data = await GameService.postHint(hint, number)
     const inputBox = document.querySelector('.input-box')
     inputBox.innerHTML = ""
-}
-
-
-
-function connectSSE(){
-    sseClient.connect()
 }
 
 async function nextTurn(){
@@ -97,14 +89,11 @@ async function endGame(){
     })
 }
 
-
-
-
 function run(){
     localStorage.setItem("score", 0);
     displayCardsMDM(localStorage.getItem("code"));
+    sseClient.connect();
     hintSubmit();
-    connectSSE();
     getScore();
     endGame();
     nextTurn();

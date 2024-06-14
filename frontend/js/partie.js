@@ -1,6 +1,6 @@
 import { GameService } from "./services/services-game.js"
-import { PseudoService } from "./services/services-pseudo.js"
 import { CardGridService } from "./services/services-grid.js"
+
 
 async function run(){
     if(localStorage.getItem("role") === "MDM"){

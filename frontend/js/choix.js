@@ -3,11 +3,19 @@ import { SSEClient } from "./libs/sse-client.js"
 
 const sseClient = new SSEClient(`localhost:8080`);
 
+// bouton choix de rôles désactivé à cause d'un problème avec la fonction viewRole() et qui empêche le bon fonctionnement de la suite
 function buttonRoleListener(){
     const buttonMDM = document.querySelector(".MDM");
     const buttonMDI = document.querySelector(".MDI");
     buttonMDM.addEventListener("click", changeMDM);
     buttonMDI.addEventListener("click", changeMDI);
+}
+
+function buttonStart(){
+    const button = document.querySelector(".start-button");
+    button.addEventListener("click", () => {
+        window.location.href = "partie.html";
+    });
 }
 
 async function changeMDM(){
@@ -19,7 +27,6 @@ async function changeMDI(){
     const data = await GameService.udpdateRole(localStorage.getItem("code"), localStorage.getItem("pseudo"), "MDI", localStorage.getItem("numeroJoueur"));
     localStorage.setItem("role", "MDI");
 }
-
 
 // fonction permettant de d'afficher le pseudo des joueurs au dessus de leur role
 async function viewRole(){
@@ -48,14 +55,6 @@ async function viewRole(){
         }
     });
 }
-
-function buttonStart(){
-    const button = document.querySelector(".start-button");
-    button.addEventListener("click", () => {
-        window.location.href = "partie.html";
-    });
-}
-
 
 function run(){
     const codePartie = localStorage.getItem("code");
