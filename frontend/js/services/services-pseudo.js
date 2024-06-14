@@ -1,4 +1,5 @@
 export class PseudoService {
+    
     async getPseudo(){
         const response = await fetch('');
         const data = await response.json();
@@ -14,6 +15,4 @@ export class PseudoService {
             return data;
         }
     }
-
-
 }

@@ -1,4 +1,3 @@
-
 export class CardGridService {
 
     static async createGrid(codePartie){
@@ -40,7 +39,6 @@ export class CardGridService {
             return response
         }
     }
-    
 }
 
 

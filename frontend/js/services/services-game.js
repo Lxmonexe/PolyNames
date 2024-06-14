@@ -9,7 +9,6 @@ export class GameService{
             data = await response;    
             return data;
         }
-        
         return 
     }
 
@@ -89,6 +88,4 @@ export class GameService{
             return data;
         }
     }
-
-    
 }
