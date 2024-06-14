@@ -9,6 +9,14 @@ public class Participer {
     private String _role;
     private int _score;
 
+    /**
+     * Constructeur
+     * @param id
+     * @param idJoueur
+     * @param idPartie
+     * @param role
+     * @param score
+     */
     public Participer(int id, int idJoueur, String idPartie, String role, int score) {
         _id = id;
         _idJoueur = idJoueur;
@@ -17,10 +25,18 @@ public class Participer {
         _score = score;
     }
 
+    /**
+     * Retourne l'id
+     * @return
+     */
     public int get_id() {
         return _id;
     }
 
+    /**
+     * Retourne l'id du joueur participant à une partie
+     * @return
+     */
     public int get_idJoueur() {
         return _idJoueur;
     }
@@ -33,10 +49,18 @@ public class Participer {
         return _idPartie;
     }
 
+    /**
+     * Retourne le role d'un joueur
+     * @return
+     */
     public String get_role() {
         return _role;
     }
 
+    /**
+     * Retourne le score d'une partie
+     * @return
+     */
     public int get_score() {
         return _score;
     }
